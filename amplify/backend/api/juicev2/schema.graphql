@@ -1,0 +1,34 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+#Query - to speak to the lambda
+#lambda function
+#not sure what kind of data we should get from this endpoint
+
+# type Query {
+#   getMenu(input: AWSJSON!): String
+  # @auth(rules:[
+  #   {allow: public, provider:iam},
+  # ])
+  # @function(name:"getmenuLambda${env}")
+# }
+
+#public data
+# fetch the menus
+
+type JuicyMenu
+  @model
+  @auth(rules: [
+    { allow:public, provider:iam, operations: [read] },
+  ])
+  {
+    id: ID!
+    menuId:Int!
+    menuItemId:Int!
+    dish:String!
+    img:String!
+    price:Int!,
+    description:String!
+    quantity:Int!
+  }

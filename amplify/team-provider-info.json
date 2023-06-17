@@ -10,6 +10,14 @@
       "StackName": "amplify-juicev2-dev-85556",
       "StackId": "arn:aws:cloudformation:us-west-2:655709272598:stack/amplify-juicev2-dev-85556/47cbecf0-0c5e-11ee-b64e-0aa6c747f393",
       "AmplifyAppId": "d1scnca9l7d3ti"
+    },
+    "categories": {
+      "auth": {
+        "juicev24b292e58": {}
+      },
+      "api": {
+        "juicev2": {}
+      }
     }
   }
 }
