@@ -11,6 +11,8 @@ export type CreateJuicyMenuInput = {
   price: number,
   description: string,
   quantity: number,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type ModelJuicyMenuConditionInput = {
@@ -21,6 +23,8 @@ export type ModelJuicyMenuConditionInput = {
   price?: ModelIntInput | null,
   description?: ModelStringInput | null,
   quantity?: ModelIntInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelJuicyMenuConditionInput | null > | null,
   or?: Array< ModelJuicyMenuConditionInput | null > | null,
   not?: ModelJuicyMenuConditionInput | null,
@@ -88,8 +92,8 @@ export type JuicyMenu = {
   price: number,
   description: string,
   quantity: number,
-  createdAt: string,
-  updatedAt: string,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type UpdateJuicyMenuInput = {
@@ -101,6 +105,8 @@ export type UpdateJuicyMenuInput = {
   price?: number | null,
   description?: string | null,
   quantity?: number | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type DeleteJuicyMenuInput = {
@@ -116,6 +122,8 @@ export type ModelJuicyMenuFilterInput = {
   price?: ModelIntInput | null,
   description?: ModelStringInput | null,
   quantity?: ModelIntInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelJuicyMenuFilterInput | null > | null,
   or?: Array< ModelJuicyMenuFilterInput | null > | null,
   not?: ModelJuicyMenuFilterInput | null,
@@ -152,6 +160,8 @@ export type ModelSubscriptionJuicyMenuFilterInput = {
   price?: ModelSubscriptionIntInput | null,
   description?: ModelSubscriptionStringInput | null,
   quantity?: ModelSubscriptionIntInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionJuicyMenuFilterInput | null > | null,
   or?: Array< ModelSubscriptionJuicyMenuFilterInput | null > | null,
 };
@@ -214,8 +224,8 @@ export type CreateJuicyMenuMutation = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -235,8 +245,8 @@ export type UpdateJuicyMenuMutation = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -256,8 +266,8 @@ export type DeleteJuicyMenuMutation = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -276,8 +286,8 @@ export type GetJuicyMenuQuery = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -300,8 +310,8 @@ export type ListJuicyMenusQuery = {
       price: number,
       description: string,
       quantity: number,
-      createdAt: string,
-      updatedAt: string,
+      createdAt?: string | null,
+      updatedAt?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -322,8 +332,8 @@ export type OnCreateJuicyMenuSubscription = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -342,8 +352,8 @@ export type OnUpdateJuicyMenuSubscription = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -362,7 +372,7 @@ export type OnDeleteJuicyMenuSubscription = {
     price: number,
     description: string,
     quantity: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };

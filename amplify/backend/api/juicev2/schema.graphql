@@ -31,4 +31,6 @@ type JuicyMenu
     price:Int!,
     description:String!
     quantity:Int!
+    createdAt:AWSDateTime
+    updatedAt:AWSDateTime
   }

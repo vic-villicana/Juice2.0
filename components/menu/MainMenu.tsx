@@ -7,6 +7,7 @@ import MenuItemModal from './MenuItemModal'
 
 const MainMenu = () => {
     const [openItem, setOpenItem] = useState(false)
+    const [selectedMenu, setSelectedMenu] = useState< number | null>(0)
 
     const handleCloseModal = () => {
         setOpenItem(false)
@@ -16,6 +17,19 @@ const MainMenu = () => {
         e.preventDefault()
         setOpenItem(true)
     }
+
+    //keep the state of the currently selected menu 
+
+    //get all menu items from the dynamodb table
+
+    //find some way to store all the data from the appsync dynamodb call
+    
+    //sort through all the menu items and display currently selected menuitems
+
+    //store the state of the currently selected item.
+
+    //render the currently selected menu item to the ui
+
     return(
         <section>
             <MenuHead>
