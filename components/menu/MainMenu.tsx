@@ -1,14 +1,38 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
+//STYLED COMPONENTS
 import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice } from "./MenuPageElements"
 import {HomeHeader, HomeH1, HeaderBtns, StandardButton} from "../home/HomePageElements"
 import MenuItemModal from './MenuItemModal'
+//AWS PACKAGES 
+import { API } from 'aws-amplify';
+import { listJuicyMenus } from '@/src/graphql/queries';
+import {GraphQLResult} from '@aws-amplify/api-graphql'
 
+
+interface MenuData{
+    id: string;
+    menuId:number;
+    menuItemId:number;
+    dish:string;
+    img:string;
+    price:number;
+    description:string;
+    quantity:number;
+}
+
+function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
+    listJuicyMenus: {
+        items:[MenuData]
+    }
+}> {
+    return response.data && response.data.listJuicyMenus && response.data.listJuicyMenus.items
+}
 
 const MainMenu = () => {
     const [openItem, setOpenItem] = useState(false)
-    const [selectedMenu, setSelectedMenu] = useState< number | null>(0)
-
+    const [selectedMenu, setSelectedMenu] = useState< Number | null>(0)
+    const [menu, setMenu] = useState<MenuData[]>([])
     const handleCloseModal = () => {
         setOpenItem(false)
     }
@@ -21,6 +45,33 @@ const MainMenu = () => {
     //keep the state of the currently selected menu 
 
     //get all menu items from the dynamodb table
+    const getMenu = async () => {
+        try{
+            const response = await API.graphql<MenuData>({
+                query:listJuicyMenus,
+                authMode:"AWS_IAM"
+            })
+
+            if(!isGraphQLResultForMenu(response)){
+                throw new Error('unexpected response from API.graphql')
+            }
+            if(!response.data){
+                throw new Error('Response data is undefined')
+            }
+
+            const theMenu = response.data.listJuicyMenus.items
+
+            setMenu(theMenu)
+
+        }catch(err){
+    
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getMenu()
+    }, [])
 
     //find some way to store all the data from the appsync dynamodb call
     
@@ -29,7 +80,7 @@ const MainMenu = () => {
     //store the state of the currently selected item.
 
     //render the currently selected menu item to the ui
-
+    console.log(menu)
     return(
         <section>
             <MenuHead>
@@ -73,7 +124,7 @@ const MainMenu = () => {
                         <MenuBtns>Kids Menu</MenuBtns>
                 </MenuSelector>
                 <MenuList>
-                    <MenuItem onClick={handleSelectItem}>
+                    {/* <MenuItem onClick={handleSelectItem}>
                         <MenuImage src="" alt=""/>
                         <Titles>
                             <MenuTitle>
@@ -138,7 +189,7 @@ const MainMenu = () => {
                                 $5.00
                             </MenuPrice>
                         </Titles>
-                    </MenuItem>
+                    </MenuItem> */}
                     
                 </MenuList>
             </Menu>
