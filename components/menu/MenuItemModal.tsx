@@ -2,16 +2,18 @@ import React from 'react'
 //material Ui
 import { Modal, Backdrop, Fade } from '@mui/material'
 // styled components
-import { MenuModal } from '../menu/MenuPageElements'
+import { ItemDescription, ItemPrice, MenuModal } from '../menu/MenuPageElements'
 import { SmallMenuItem } from './MenuPageElements';
 import {  HomeHeader, MainHeader, HomeH1 } from '../home/HomePageElements'
+import { MenuData } from './MainMenu';
 
 interface MenuModalProps {
     open:boolean,
-    close: () => void;
+    close: () => void,
+    item: MenuData
 }
 
-const MenuItemModal = ({open, close}:MenuModalProps) => {
+const MenuItemModal = ({open, close, item}:MenuModalProps) => {
     return(
         <div>
             <Modal
@@ -31,9 +33,13 @@ const MenuItemModal = ({open, close}:MenuModalProps) => {
                         <SmallMenuItem>
                             <MainHeader>
                                 <HomeHeader>
-                                    <HomeH1>Holla!!!!</HomeH1>
+                                    <HomeH1>{item.dish}</HomeH1>
                                 </HomeHeader>
                             </MainHeader>
+                            <ItemPrice>${item.price}.00</ItemPrice>
+                            <ItemDescription>
+                                {item.description}
+                            </ItemDescription>
                         </SmallMenuItem>
                     </MenuModal>
 

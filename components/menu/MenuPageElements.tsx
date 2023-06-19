@@ -112,7 +112,7 @@ export const MenuList = styled.div`
     @media only screen and (min-width:1024px){
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 3em auto;
     max-width: 1500px;
     }
@@ -147,8 +147,8 @@ export const MenuItem = styled.div`
 `
 
 export const MenuImage = styled(Image)`
-    height: 100px;
-    width:100px;
+    /* height: 100px;
+    width:100px; */
     background-size:cover;
     background-position:center;
     border-radius: 11px;
@@ -158,7 +158,7 @@ export const MenuImage = styled(Image)`
 export const Titles = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding-left: 1em;
     max-width: 250px;
     color: rgba(0,0,0,.87);
@@ -186,14 +186,20 @@ export const SmallMenuItem = styled.div`
     transform:translate(-50%, -50%);
     left:50%;
     top:50%;
-    max-width:390px;
+    width:390px;
     margin:0 auto;
     background:white;
     height:65%;
-    overflow-y:scroll;
+    /* overflow-y:scroll; */
 `
 
-export const ItemContainer = styled.div`
+export const ItemDescription = styled.div`
+    max-width:310px;
+    margin:0 auto 2em;
+`;
 
+export const ItemPrice = styled.div`
+    font-size:150%;
+    text-align:center;
 `;
 

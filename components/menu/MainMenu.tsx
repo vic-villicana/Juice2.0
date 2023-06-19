@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-
 //STYLED COMPONENTS
 import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice } from "./MenuPageElements"
 import {HomeHeader, HomeH1, HeaderBtns, StandardButton} from "../home/HomePageElements"
@@ -10,7 +9,7 @@ import { listJuicyMenus } from '@/src/graphql/queries';
 import {GraphQLResult} from '@aws-amplify/api-graphql'
 
 
-interface MenuData{
+export interface MenuData{
     id: string;
     menuId:number;
     menuItemId:number;
@@ -33,13 +32,14 @@ const MainMenu = () => {
     const [openItem, setOpenItem] = useState(false)
     const [selectedMenu, setSelectedMenu] = useState< Number | null>(0)
     const [menu, setMenu] = useState<MenuData[]>([])
+    const [item, setItem] = useState<MenuData | {}>({})
+
     const handleCloseModal = () => {
         setOpenItem(false)
     }
     
     const handleSelectItem = async (e: React.SyntheticEvent) => {
         e.preventDefault()
-        setOpenItem(true)
     }
 
     //keep the state of the currently selected menu 
@@ -51,14 +51,12 @@ const MainMenu = () => {
                 query:listJuicyMenus,
                 authMode:"AWS_IAM"
             })
-
             if(!isGraphQLResultForMenu(response)){
                 throw new Error('unexpected response from API.graphql')
             }
             if(!response.data){
                 throw new Error('Response data is undefined')
             }
-
             const theMenu = response.data.listJuicyMenus.items
 
             setMenu(theMenu)
@@ -69,6 +67,11 @@ const MainMenu = () => {
         }
     }
 
+    const selectMenu = ( item: MenuData) => {
+        setOpenItem(true)
+        setItem(item)
+    }
+
     useEffect(() => {
         getMenu()
     }, [])
@@ -76,11 +79,27 @@ const MainMenu = () => {
     //find some way to store all the data from the appsync dynamodb call
     
     //sort through all the menu items and display currently selected menuitems
+    const filteredMenu = menu.filter(item => item.menuId === selectedMenu )
 
+
+    const currentMenu = filteredMenu.map(item => {
+        return (
+            <MenuItem key={item.id} onClick={() => selectMenu(item)} >
+                <MenuImage src={item.img} alt={item.dish} width="100" height="100"/>
+                <Titles>
+                    <MenuTitle>
+                        {item.dish}
+                    </MenuTitle>
+                    <MenuPrice>
+                        ${item.price}.00
+                    </MenuPrice>
+                </Titles>
+            </MenuItem>
+        )
+    })
     //store the state of the currently selected item.
 
     //render the currently selected menu item to the ui
-    console.log(menu)
     return(
         <section>
             <MenuHead>
@@ -106,12 +125,11 @@ const MainMenu = () => {
             </Location>
 
             <Menu>
-
                 <MenuItemModal 
                     open={openItem}
                     close={handleCloseModal}
+                    item={item}
                 />
-                
                 <MenuH1>
                     Menu
                 </MenuH1>
@@ -124,73 +142,7 @@ const MainMenu = () => {
                         <MenuBtns>Kids Menu</MenuBtns>
                 </MenuSelector>
                 <MenuList>
-                    {/* <MenuItem onClick={handleSelectItem}>
-                        <MenuImage src="" alt=""/>
-                        <Titles>
-                            <MenuTitle>
-                                Enchiladas
-                            </MenuTitle>
-                            <MenuPrice>
-                                $5.00
-                            </MenuPrice>
-                        </Titles>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuImage src="" alt=""/>
-                        <Titles>
-                            <MenuTitle>
-                                Enchiladas
-                            </MenuTitle>
-                            <MenuPrice>
-                                $5.00
-                            </MenuPrice>
-                        </Titles>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuImage src="" alt=""/>
-                        <Titles>
-                            <MenuTitle>
-                                Enchiladas
-                            </MenuTitle>
-                            <MenuPrice>
-                                $5.00
-                            </MenuPrice>
-                        </Titles>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuImage src="" alt=""/>
-                        <Titles>
-                            <MenuTitle>
-                                Enchiladas
-                            </MenuTitle>
-                            <MenuPrice>
-                                $5.00
-                            </MenuPrice>
-                        </Titles>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuImage src="" alt=""/>
-                        <Titles>
-                            <MenuTitle>
-                                Enchiladas
-                            </MenuTitle>
-                            <MenuPrice>
-                                $5.00
-                            </MenuPrice>
-                        </Titles>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuImage src="" alt=""/>
-                        <Titles>
-                            <MenuTitle>
-                                Enchiladas
-                            </MenuTitle>
-                            <MenuPrice>
-                                $5.00
-                            </MenuPrice>
-                        </Titles>
-                    </MenuItem> */}
-                    
+                    {currentMenu}                    
                 </MenuList>
             </Menu>
         </section>
