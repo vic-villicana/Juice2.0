@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 //STYLED COMPONENTS
-import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice } from "./MenuPageElements"
+import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice, CounterWindow, QuantityCounter, Counter, Plus, Minus } from "./MenuPageElements"
 import {HomeHeader, HomeH1, HeaderBtns, StandardButton} from "../home/HomePageElements"
 import MenuItemModal from './MenuItemModal'
 //AWS PACKAGES 
@@ -8,7 +8,7 @@ import { API } from 'aws-amplify';
 import { listJuicyMenus } from '@/src/graphql/queries';
 import {GraphQLResult} from '@aws-amplify/api-graphql'
 
-
+//Interface for our DynamoDB data object
 export interface MenuData{
     id: string;
     menuId:number;
@@ -20,6 +20,7 @@ export interface MenuData{
     quantity:number;
 }
 
+//type checker for our DynamoDB object
 function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
     listJuicyMenus: {
         items:[MenuData]
@@ -28,23 +29,23 @@ function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
     return response.data && response.data.listJuicyMenus && response.data.listJuicyMenus.items
 }
 
+
 const MainMenu = () => {
     const [openItem, setOpenItem] = useState(false)
     const [selectedMenu, setSelectedMenu] = useState< Number | null>(0)
     const [menu, setMenu] = useState<MenuData[]>([])
-    const [item, setItem] = useState<MenuData | {}>({})
+    const [item, setItem] = useState<MenuData>({})
 
     const handleCloseModal = () => {
         setOpenItem(false)
     }
     
-    const handleSelectItem = async (e: React.SyntheticEvent) => {
-        e.preventDefault()
-    }
+    // const handleSelectItem = async (e: React.SyntheticEvent) => {
+    //     e.preventDefault()
+    // }
 
-    //keep the state of the currently selected menu 
 
-    //get all menu items from the dynamodb table
+    //get all menu items from the dynamodb table and set as menu State
     const getMenu = async () => {
         try{
             const response = await API.graphql<MenuData>({
@@ -67,39 +68,50 @@ const MainMenu = () => {
         }
     }
 
-    const selectMenu = ( item: MenuData) => {
+    //Sets a selected MenuItem as item state and opens the modal
+    const selectMenu = ( selecteditem: MenuData) => {
         setOpenItem(true)
-        setItem(item)
+        const newItem = {...selecteditem}
+        setItem(newItem)
     }
 
     useEffect(() => {
         getMenu()
     }, [])
 
-    //find some way to store all the data from the appsync dynamodb call
     
-    //sort through all the menu items and display currently selected menuitems
-    const filteredMenu = menu.filter(item => item.menuId === selectedMenu )
+    //sort through all the menu items and display currently selected menu from menu state
+    const filteredMenu = menu.filter(itemz => itemz.menuId === selectedMenu )
 
-
-    const currentMenu = filteredMenu.map(item => {
+    //map out menu item state data to the MenuItem conponent
+    const currentMenu = filteredMenu.map(items => {
         return (
-            <MenuItem key={item.id} onClick={() => selectMenu(item)} >
-                <MenuImage src={item.img} alt={item.dish} width="100" height="100"/>
+            <MenuItem key={items.id} onClick={() => selectMenu(items)} >
+                <MenuImage src={items.img} alt={items.dish} width="100" height="100"/>
                 <Titles>
                     <MenuTitle>
-                        {item.dish}
+                        {items.dish}
                     </MenuTitle>
                     <MenuPrice>
-                        ${item.price}.00
+                        ${items.price}.00
                     </MenuPrice>
                 </Titles>
             </MenuItem>
         )
     })
-    //store the state of the currently selected item.
 
-    //render the currently selected menu item to the ui
+    
+    
+    //functions to increment the quantity value of the item state object
+    const increment = () => {
+        const newItem = {...item, quantity:item.quantity += 1}
+        setItem(newItem)
+    }
+    const decrement = () => {
+        const newItem = {...item, quantity: item.quantity === 1 ? 1 : item.quantity -= 1}
+        setItem(newItem)
+    }
+
     return(
         <section>
             <MenuHead>
@@ -129,6 +141,8 @@ const MainMenu = () => {
                     open={openItem}
                     close={handleCloseModal}
                     item={item}
+                    increment={increment}
+                    decrement={decrement}
                 />
                 <MenuH1>
                     Menu

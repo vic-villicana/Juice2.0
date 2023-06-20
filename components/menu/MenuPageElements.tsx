@@ -189,7 +189,7 @@ export const SmallMenuItem = styled.div`
     width:390px;
     margin:0 auto;
     background:white;
-    height:65%;
+    height:auto;
     /* overflow-y:scroll; */
 `
 
@@ -201,5 +201,57 @@ export const ItemDescription = styled.div`
 export const ItemPrice = styled.div`
     font-size:150%;
     text-align:center;
+`;
+
+export const QuantityCounter = styled.div`
+    margin-bottom:.5em;
+    height:50px;
+    width:auto;
+    padding-left:2em;
+    padding-right:2em;
+    background: #e72b2b ;
+    border-radius: 0 0 11px 11px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom:3em;
+    box-shadow:0px 4px 7px 2px rgba(85, 85, 85, 0.568)
+`;
+
+export const CounterTitle = styled.p`
+    color: white;
+    font-size: 19px;;
+`;
+
+export const Counter = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:80px;
+`;
+
+export const Minus = styled.div`
+    border:none;
+    color:white;
+    background:none;
+    font-size:2em;
+`;
+export const Plus = styled.div`
+    border:none;
+    color:white;
+    background: none;
+    font-size:2em;
+`;
+
+export const CounterWindow = styled.p`
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:25px;
+    width:35px;
+    color:white;
+    @media only screen and(min-width:600px ){
+        font-size:125%;
+    }
 `;
 

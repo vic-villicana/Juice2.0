@@ -6,14 +6,19 @@ import { ItemDescription, ItemPrice, MenuModal } from '../menu/MenuPageElements'
 import { SmallMenuItem } from './MenuPageElements';
 import {  HomeHeader, MainHeader, HomeH1 } from '../home/HomePageElements'
 import { MenuData } from './MainMenu';
+import {CounterWindow, QuantityCounter, Counter, Plus, Minus } from "./MenuPageElements"
 
 interface MenuModalProps {
     open:boolean,
     close: () => void,
-    item: MenuData
+    item: MenuData,
+    increment: () => void,
+    decrement: () => void
 }
 
-const MenuItemModal = ({open, close, item}:MenuModalProps) => {
+const MenuItemModal = ({open, close, item, increment, decrement}:MenuModalProps) => {
+
+
     return(
         <div>
             <Modal
@@ -36,6 +41,13 @@ const MenuItemModal = ({open, close, item}:MenuModalProps) => {
                                     <HomeH1>{item.dish}</HomeH1>
                                 </HomeHeader>
                             </MainHeader>
+                            <QuantityCounter>
+                                <Counter>
+                                    <Plus onClick={increment}>+</Plus>
+                                    <CounterWindow>{item.quantity}</CounterWindow>
+                                    <Minus onClick={decrement}>-</Minus>
+                                </Counter>
+                            </QuantityCounter>
                             <ItemPrice>${item.price}.00</ItemPrice>
                             <ItemDescription>
                                 {item.description}
