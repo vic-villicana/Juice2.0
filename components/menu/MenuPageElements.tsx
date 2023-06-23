@@ -178,7 +178,7 @@ export const MenuPrice = styled.div`
 export const MenuModal = styled(Box)`
     height: 100%;
     width:100%;
-
+    overflow-y:scroll;
 `
 
 export const SmallMenuItem = styled.div`
@@ -189,8 +189,8 @@ export const SmallMenuItem = styled.div`
     width:390px;
     margin:0 auto;
     background:white;
-    height:auto;
-    /* overflow-y:scroll; */
+    height:100%;
+    overflow-y:scroll;
 `
 
 export const ItemDescription = styled.div`
@@ -255,3 +255,59 @@ export const CounterWindow = styled.p`
     }
 `;
 
+export const SubContainer = styled.div`
+    width: auto;
+    height: auto;
+    margin-bottom:3em;
+`;
+
+export const SubHeading = styled.h2`
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom:1em;
+`;
+
+export const ChosenHeading = styled.h4`
+    padding-left:1em;
+    text-align:left;
+`;
+
+export const SubGrid = styled.div`
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    grid-gap:1.5em;
+    margin:0 auto;
+`;
+
+export const Chosen = styled(Image)`
+
+    background-size:cover;
+    background-position:center;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border-radius:11px;
+    box-shadow:0px 6px 7px 2px rgb(65, 65, 65, 0.568);
+`;
+
+export const Choices = styled.div`
+        width:315px;
+        height:150px;
+        display:flex;
+        justify-content: space-between;
+        grid-row-start:2;
+        grid-column-end:2;
+        border-radius:11px;
+        margin:1em auto;
+
+`;
+
+export const Options = styled(Image)`
+    height:150px;
+    width:150px;
+    background-size:cover;
+    background-position:center;
+    grid-row-start:2;
+    grid-column-start:2;
+    border-radius:11px;
+    box-shadow:0px 4px 5px rgb(65, 65, 65, 0.568);
+`;

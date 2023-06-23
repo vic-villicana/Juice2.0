@@ -20,6 +20,12 @@ export interface MenuData{
     quantity:number;
 }
 
+export interface SideItems{
+    item:string;
+    price:number;
+    img:string;
+}
+
 //type checker for our DynamoDB object
 function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
     listJuicyMenus: {
@@ -33,8 +39,31 @@ function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
 const MainMenu = () => {
     const [openItem, setOpenItem] = useState(false)
     const [selectedMenu, setSelectedMenu] = useState< Number | null>(0)
+    const [cart, setCart] = useState<MenuData[]>([])
     const [menu, setMenu] = useState<MenuData[]>([])
     const [item, setItem] = useState<MenuData>({})
+    const [side, setSide ] = useState<SideItems>({
+        item:'fries',
+        price:3.00,
+        img:'/pastor.jpg'
+    })
+    const [allSides, setAllSides] = useState<SideItems[]>([
+        {
+            item:'fries',
+            price:3.00,
+            img:'/chicken.jpg'
+        },
+        {
+            item:'rice',
+            price:3.00,
+            img:'/chicken.jpg'
+        },
+        {
+            item:'beans',
+            price:3.00,
+            img:'/chicken.jpg'
+        },
+    ])
 
     const handleCloseModal = () => {
         setOpenItem(false)
@@ -112,6 +141,11 @@ const MainMenu = () => {
         setItem(newItem)
     }
 
+    const addItem = (elItem: MenuData) => {
+        const addItem = {...elItem}
+        setCart([...cart, addItem])
+    }
+
     return(
         <section>
             <MenuHead>
@@ -143,6 +177,9 @@ const MainMenu = () => {
                     item={item}
                     increment={increment}
                     decrement={decrement}
+                    sides={allSides}
+                    side={side}
+                    addToCart={addItem}
                 />
                 <MenuH1>
                     Menu
