@@ -45,23 +45,23 @@ const MainMenu = () => {
     const [side, setSide ] = useState<SideItems>({
         item:'fries',
         price:3.00,
-        img:'/pastor.jpg'
+        img:'/fries.jpg'
     })
     const [allSides, setAllSides] = useState<SideItems[]>([
         {
             item:'fries',
             price:3.00,
-            img:'/chicken.jpg'
+            img:'/fries.jpg'
         },
         {
             item:'rice',
             price:3.00,
-            img:'/chicken.jpg'
+            img:'/rice.jpg'
         },
         {
             item:'beans',
             price:3.00,
-            img:'/chicken.jpg'
+            img:'/beans.jpg'
         },
     ])
 

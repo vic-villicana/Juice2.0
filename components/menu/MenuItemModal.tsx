@@ -2,7 +2,7 @@ import React from 'react'
 //material Ui
 import { Modal, Backdrop, Fade } from '@mui/material'
 // styled components
-import { Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuModal, Option, Options, SubContainer, SubGrid, SubHeading } from '../menu/MenuPageElements'
+import { Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuButton, MenuHeader, MenuModal, Options, SubContainer, SubGrid, SubHeading } from '../menu/MenuPageElements'
 import { SmallMenuItem } from './MenuPageElements';
 import {  HomeHeader, MainHeader, HomeH1, StandardButton } from '../home/HomePageElements'
 import { MenuData, SideItems } from './MainMenu';
@@ -50,11 +50,11 @@ const MenuItemModal = ({open, close, item, increment, decrement, sides, side, ad
                 <Fade in={open}>
                     <MenuModal>
                         <SmallMenuItem>
-                            <MainHeader>
+                            <MenuHeader>
                                 <HomeHeader>
                                     <HomeH1>{item.dish}</HomeH1>
                                 </HomeHeader>
-                            </MainHeader>
+                            </MenuHeader>
                             <QuantityCounter>
                                 <Counter>
                                     <Plus onClick={increment}>+</Plus>
@@ -78,11 +78,14 @@ const MenuItemModal = ({open, close, item, increment, decrement, sides, side, ad
                                 <Choices>
                                     <Chosen src={side.img} alt={side.item} height={150} width={315}  />
                                 </Choices>
+                                <ChosenHeading>
+                                    Options:
+                                </ChosenHeading>
                                 <Choices>
                                     {renderSides}
                                 </Choices>
                             </SubGrid>
-                            <StandardButton onClick={() => addToCart(item)}>Add To Cart</StandardButton>
+                            <MenuButton onClick={() => addToCart(item)}>Add To Cart</MenuButton>
                         </SmallMenuItem>
                     </MenuModal>
 

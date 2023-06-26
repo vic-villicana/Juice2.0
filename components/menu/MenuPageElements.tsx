@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Box } from '@mui/material'
+import { StandardButton, MainHeader } from '../home/HomePageElements'
 
 export const MenuHead = styled.section`
    @media only screen and (min-width:376px){
@@ -26,6 +27,9 @@ export const MenuHead = styled.section`
         height:475px;
     }
 `
+export const MenuHeader = styled(MainHeader)`
+   height:40vh;
+`;
 
 export const Menu = styled.div`
     
@@ -191,6 +195,7 @@ export const SmallMenuItem = styled.div`
     background:white;
     height:100%;
     overflow-y:scroll;
+    padding-bottom:2em;
 `
 
 export const ItemDescription = styled.div`
@@ -276,17 +281,20 @@ export const SubGrid = styled.div`
     grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     grid-gap:1.5em;
-    margin:0 auto;
+    margin:0 auto 2em auto;
 `;
 
 export const Chosen = styled(Image)`
-
+    height:150px;
+    width:315px; 
     background-size:cover;
     background-position:center;
     grid-row-start: 1;
     grid-row-end: 2;
     border-radius:11px;
     box-shadow:0px 6px 7px 2px rgb(65, 65, 65, 0.568);
+    object-fit:cover;
+    object-position:50% 37%;
 `;
 
 export const Choices = styled.div`
@@ -298,16 +306,24 @@ export const Choices = styled.div`
         grid-column-end:2;
         border-radius:11px;
         margin:1em auto;
-
+        position:relative;
 `;
 
 export const Options = styled(Image)`
-    height:150px;
-    width:150px;
+    /* height:150px;
+    width:150px; */
     background-size:cover;
     background-position:center;
     grid-row-start:2;
     grid-column-start:2;
     border-radius:11px;
     box-shadow:0px 4px 5px rgb(65, 65, 65, 0.568);
+    object-fit:cover;
+`;
+
+export const MenuButton = styled(StandardButton)`
+    text-align: center;
+    width:75%;
+    margin:0 auto;
+    background-color:#e72b2b;
 `;
