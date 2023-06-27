@@ -54,7 +54,7 @@ export const HeaderBtns = styled.div`
         display: flex;
         justify-content: space-around;
         width: 100%;
-    
+        cursor: pointer;
 `
 
 export const StandardButton = styled.div`
@@ -64,7 +64,7 @@ export const StandardButton = styled.div`
         color: white;
         border-radius: 6px;
         font-size: 110%;
-    
+        cursor: pointer;
 `
 
 // about section

@@ -131,6 +131,7 @@ export const MenuBtns = styled.div`
     margin: 0 0.5em 0 0.5em;
     flex-shrink: 0;
     color: white;
+    cursor: pointer;
 `
 
 export const MenuItem = styled.div`
@@ -139,6 +140,7 @@ export const MenuItem = styled.div`
     margin-bottom:3em;
     padding-bottom:1.75em;
     border-bottom:1px solid #e72b2b;
+    cursor: pointer;
     @media only screen and (mind-width:600px){
         margin:0 3.5em 3em;
         padding-bottom:3em;
@@ -220,7 +222,7 @@ export const QuantityCounter = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom:3em;
-    box-shadow:0px 4px 7px 2px rgba(85, 85, 85, 0.568)
+    box-shadow:0px 4px 7px 2px rgba(85, 85, 85, 0.568);
 `;
 
 export const CounterTitle = styled.p`
@@ -240,12 +242,14 @@ export const Minus = styled.div`
     color:white;
     background:none;
     font-size:2em;
+    cursor:pointer;
 `;
 export const Plus = styled.div`
     border:none;
     color:white;
     background: none;
     font-size:2em;
+    cursor:pointer;
 `;
 
 export const CounterWindow = styled.p`

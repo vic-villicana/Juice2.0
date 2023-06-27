@@ -8,7 +8,7 @@ import { API } from 'aws-amplify';
 import { listJuicyMenus } from '@/src/graphql/queries';
 import {GraphQLResult} from '@aws-amplify/api-graphql'
 
-//Interface for our DynamoDB data object
+//Interface for our DynamoDB data objects
 export interface MenuData{
     id: string;
     menuId:number;
@@ -25,6 +25,39 @@ export interface SideItems{
     price:number;
     img:string;
 }
+
+const menuOptions = [
+    {
+        menu:'FamilyMeals',
+        id:0,
+        desc:"We’re committed to continuously evolving our menu so that we’re always WOW-ing our guests with new unexpected flavor combinations. Be sure to check back to discover our Chef’s latest innovations."
+    },
+    {
+        menu:'Dinner Menu',
+        id:1,
+        desc:"We’re committed to continuously evolving our menu so that we’re always WOW-ing our guests with new unexpected flavor combinations. Be sure to check back to discover our Chef’s latest innovations."
+    },
+    {
+        menu:'a La Carte',
+        id:2,
+        desc:"Traditional Mexican dinners that are enough to feed the whole family, All plates feed up to two people"
+    },
+    {
+        menu:'Daily Specials',
+        id:3,
+        desc:"Some of our more unique and seasonal dishes. Get them while they're here. For a limited time!!"
+    },
+    {
+        menu:'Vegan Menu',
+        id:4,
+        desc:"Yes we even have something for you!"
+    },
+    {
+        menu:'Kids Menu',
+        id:5,
+        desc:"RECOMMENDED FOR KIDS 8 & UNDER Served with a kids beverage and sliced apples (organic milk add 2.40)"
+    },
+]
 
 //type checker for our DynamoDB object
 function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
@@ -69,10 +102,15 @@ const MainMenu = () => {
         setOpenItem(false)
     }
     
-    // const handleSelectItem = async (e: React.SyntheticEvent) => {
-    //     e.preventDefault()
-    // }
+    const setTheMenu = (optionId: number) => {
+        setSelectedMenu(optionId)
+    }
 
+    const chosenMenu = menuOptions.map(option => {
+        return(
+            <MenuBtns onClick={() => setTheMenu(option.id)} key={option.id}>{option.menu}</MenuBtns> 
+        )
+    })
 
     //get all menu items from the dynamodb table and set as menu State
     const getMenu = async () => {
@@ -166,7 +204,7 @@ const MainMenu = () => {
 
             <Location>
                 <LocationH1>Current Location:</LocationH1>
-                {}
+                
                 <LocationBtn>Location</LocationBtn>
             </Location>
 
@@ -185,12 +223,7 @@ const MainMenu = () => {
                     Menu
                 </MenuH1>
                 <MenuSelector>
-                        <MenuBtns>Family Meals</MenuBtns>
-                        <MenuBtns>Dinner Menu</MenuBtns>
-                        <MenuBtns>a La Carte</MenuBtns>
-                        <MenuBtns>Daily Specials</MenuBtns>
-                        <MenuBtns>Vegan Menu</MenuBtns>
-                        <MenuBtns>Kids Menu</MenuBtns>
+                    {chosenMenu}
                 </MenuSelector>
                 <MenuList>
                     {currentMenu}                    
