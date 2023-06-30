@@ -1,12 +1,13 @@
 import { AddMoreItems, AddMoreItemsBtn, CartC, CartTotal, CheckoutButton, DetailsBtn, ItemCart, OrderDetails } from "./CartPageElements"
 import {CartBG} from "@/components/cart/CartPageElements"
-import pattern from "../../public/pattern.jpg"
 import { useGlobalContext } from "@/assets/store"
 
 const Cart = () => {
     const {cart, setCart} = useGlobalContext();
-    console.log(cart)
 
+    const showCart = cart.map(item => {
+        return <h1 key={item.id}>{item.dish}</h1>
+    })
     return(
         <CartC>
             <CartBG 
@@ -29,6 +30,7 @@ const Cart = () => {
                 </AddMoreItems>
                 <ItemCart>
                     Items:
+                    {showCart}
                 </ItemCart>
                 <CartTotal>
                     Total:

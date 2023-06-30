@@ -1,11 +1,6 @@
 import Head from "next/head";
-import { GlobalContextProvider } from "@/assets/store";
 import styles from '@/styles/Home.module.css'
 import  MainMenu  from "@/components/menu/MainMenu";
-
-
-import {useState, useContext, createContext, Dispatch, SetStateAction} from "react"
-
 
 
 const Menu = () => {
@@ -19,9 +14,7 @@ const Menu = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={styles.main}>
-                <GlobalContextProvider>
                     <MainMenu  />
-                </GlobalContextProvider>
             </main>
 
         </>

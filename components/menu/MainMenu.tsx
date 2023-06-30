@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react'
 import { useGlobalContext } from '@/assets/store'
+import Link from 'next/link'
 //STYLED COMPONENTS
-import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice, CounterWindow, QuantityCounter, Counter, Plus, Minus } from "./MenuPageElements"
+import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice, CounterWindow, QuantityCounter, Counter, Plus, Minus, CartLink } from "./MenuPageElements"
 import {HomeHeader, HomeH1, HeaderBtns, StandardButton} from "../home/HomePageElements"
 import MenuItemModal from './MenuItemModal'
 //AWS PACKAGES 
@@ -216,8 +217,10 @@ const MainMenu = () => {
 
             <Location>
                 <LocationH1>Current Location:</LocationH1>
-                
-                <LocationBtn>Location</LocationBtn>
+                        
+                <LocationBtn>
+                    <Link href="/cart">Go TO Cart</Link>
+                </LocationBtn>
             </Location>
 
             <Menu>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { Box } from '@mui/material'
 import { StandardButton, MainHeader } from '../home/HomePageElements'
+import Link from 'next/link'
 
 export const MenuHead = styled.section`
    @media only screen and (min-width:376px){
@@ -330,4 +331,8 @@ export const MenuButton = styled(StandardButton)`
     width:75%;
     margin:0 auto;
     background-color:#e72b2b;
+`;
+
+export const CartLink = styled(Link)`
+    color:green;
 `;
