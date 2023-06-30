@@ -1,8 +1,12 @@
 import { AddMoreItems, AddMoreItemsBtn, CartC, CartTotal, CheckoutButton, DetailsBtn, ItemCart, OrderDetails } from "./CartPageElements"
 import {CartBG} from "@/components/cart/CartPageElements"
 import pattern from "../../public/pattern.jpg"
+import { useGlobalContext } from "@/assets/store"
 
 const Cart = () => {
+    const {cart, setCart} = useGlobalContext();
+    console.log(cart)
+
     return(
         <CartC>
             <CartBG 

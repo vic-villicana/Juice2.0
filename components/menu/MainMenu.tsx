@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { useGlobalContext } from '@/assets/store'
 //STYLED COMPONENTS
 import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice, CounterWindow, QuantityCounter, Counter, Plus, Minus } from "./MenuPageElements"
 import {HomeHeader, HomeH1, HeaderBtns, StandardButton} from "../home/HomePageElements"
@@ -25,6 +26,8 @@ export interface SideItems{
     price:number;
     img:string;
 }
+
+
 
 const menuOptions = [
     {
@@ -70,9 +73,10 @@ function isGraphQLResultForMenu(response: any): response is GraphQLResult<{
 
 
 const MainMenu = () => {
+    const {cart, setCart} = useGlobalContext();
     const [openItem, setOpenItem] = useState(false)
     const [selectedMenu, setSelectedMenu] = useState< Number | null>(0)
-    const [cart, setCart] = useState<MenuData[]>([])
+    // const [cart, setCart] = useState<MenuData[]>([])
     const [menu, setMenu] = useState<MenuData[]>([])
     const [item, setItem] = useState<MenuData>({})
     const [side, setSide ] = useState<SideItems>({
@@ -180,8 +184,16 @@ const MainMenu = () => {
     }
 
     const addItem = (elItem: MenuData) => {
+
         const addItem = {...elItem}
+        console.log(cart, addItem)
+
         setCart([...cart, addItem])
+    }
+
+    const chooseSide = (side: SideItems) => {
+        const newSide = {...side}
+        setSide(newSide)
     }
 
     return(
@@ -218,6 +230,7 @@ const MainMenu = () => {
                     sides={allSides}
                     side={side}
                     addToCart={addItem}
+                    chooseASide={chooseSide}
                 />
                 <MenuH1>
                     Menu

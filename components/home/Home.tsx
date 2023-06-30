@@ -1,6 +1,6 @@
 import { Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, Mparagraph, Signature, StandardButton } from "./HomePageElements"
-import platos from '../../assets/platos.jpg'
-import table from '../../assets/mexicantable.jpg'
+import platos from '../../public/platos.jpg'
+import table from '../../public/mexicantable.jpg'
 
 const HomePage = () => {
     return(
@@ -61,7 +61,7 @@ const HomePage = () => {
                         <CardBtn >
                             Order Now
                         </CardBtn>
-                        <Card2 src={platos} height="300" alt="plate" />
+                        <Card2 src="/platos.jpg" height="300" width="300" alt="plate" />
                     </Card>
                     <Card>
                         <Gradient/>
@@ -71,7 +71,7 @@ const HomePage = () => {
                         <CardBtn >
                             Catering 
                         </CardBtn>
-                        <Card2 src={table} height="300" alt="plate" />
+                        <Card2 src="/mexicantable.jpg" height="300" width="300" alt="plate" />
                     </Card>
                     <Card >
                         <Gradient/>
@@ -81,7 +81,7 @@ const HomePage = () => {
                         <CardBtn >
                             Contact Us
                         </CardBtn>
-                        <Card2 src={table} height="300" alt="plate" />
+                        <Card2 src="/platos.jpg" height="300" width="300" alt="plate" />
                     </Card>
                 </CardContainer>
             </CardSection>

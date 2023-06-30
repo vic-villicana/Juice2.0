@@ -1,9 +1,10 @@
 import Head from "next/head";
-
+import { GlobalContextProvider } from "@/assets/store";
 //styles 
 import styles from "@/styles/Home.module.css"
 // styled comonents
 import  Cart  from "@/components/cart/Cart";
+
 const Menu = () => {
     return(
         <>
@@ -14,7 +15,9 @@ const Menu = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={styles.main}>
-                <Cart />
+                <GlobalContextProvider>
+                    <Cart />    
+                </GlobalContextProvider>
             </main>
         </>
     )

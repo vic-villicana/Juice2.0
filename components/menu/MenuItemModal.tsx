@@ -17,16 +17,17 @@ interface MenuModalProps {
     sides: SideItems[],
     side: SideItems,
     addToCart: (arg0:MenuData) => void,
+    chooseASide: (arg0:SideItems) => void
 }
 
-const MenuItemModal = ({open, close, item, increment, decrement, sides, side, addToCart}:MenuModalProps) => {
+const MenuItemModal = ({open, close, item, increment, decrement, sides, side, addToCart, chooseASide}:MenuModalProps) => {
 
     const renderSides = sides.map((sideDish, i) => {
             if(sideDish.item === side.item){
                 return null
             }else{
                 return (
-                    <Options key={sideDish.item} src={sideDish.img} height='150' width='150' alt={sideDish.price} />
+                    <Options onClick={() => chooseASide(sideDish)} key={sideDish.item} src={sideDish.img} height='150' width='150' alt={sideDish.price} />
                 )
             }
         })

@@ -15,15 +15,16 @@ export const CartBG = styled(Image)`
 `;
 
 export const OrderDetails = styled.div`
+
     display: flex;
     max-width: 350px;
-    margin: 5em auto;
     border-radius: 11px;
     flex-direction: column;
     background: rgba(255, 245, 238, 0.842);
     /* background: rgba(90, 226, 56, 0.842); */
     padding: 1em 1em;
     height: auto;
+    margin: 11em auto;
 `;
 
 export const DetailsBtn = styled.div`
