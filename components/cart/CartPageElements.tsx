@@ -5,6 +5,7 @@ import Image from 'next/image'
 export const CartC = styled.section`
     background-size: cover;
     background-position: center;
+    height:100vh;
     /* padding: 2em 0; */
 `;
 
@@ -15,7 +16,7 @@ export const CartBG = styled(Image)`
 `;
 
 export const OrderDetails = styled.div`
-
+    position:relative;
     display: flex;
     max-width: 350px;
     border-radius: 11px;
@@ -24,7 +25,9 @@ export const OrderDetails = styled.div`
     /* background: rgba(90, 226, 56, 0.842); */
     padding: 1em 1em;
     height: auto;
-    margin: 11em auto;
+    transform:translate(-50%, -50%);
+    top:50%;
+    left:50%;
 `;
 
 export const DetailsBtn = styled.div`
@@ -42,6 +45,7 @@ export const AddMoreItems = styled.div`
     width: auto;
     margin-top: 3em;
     margin-bottom: 1.5em;
+    justify-content: center;
 `;
 
 export const AddMoreItemsBtn = styled(StandardButton)`

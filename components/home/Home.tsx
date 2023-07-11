@@ -1,4 +1,4 @@
-import { Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, Mparagraph, Signature, StandardButton } from "./HomePageElements"
+import { ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, Mparagraph, Signature, StandardButton } from "./HomePageElements"
 import platos from '../../public/platos.jpg'
 import table from '../../public/mexicantable.jpg'
 
@@ -12,10 +12,13 @@ const HomePage = () => {
                         Juicy Juice Tacos
                     </HomeH1>
                     <HeaderBtns>
-                        <StandardButton>
+                        {/* <StandardButton >
                             Order Now
-                        </StandardButton>
-                        <StandardButton>
+                        </StandardButton> */}
+                        <ButtonLink href='/menu' passHref>
+                            Menu
+                        </ButtonLink>
+                        <StandardButton >
                             Book Event
                         </StandardButton>
                     </HeaderBtns>

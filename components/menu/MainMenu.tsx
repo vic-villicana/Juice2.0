@@ -2,8 +2,8 @@ import {useState, useEffect} from 'react'
 import { useGlobalContext } from '@/assets/store'
 import Link from 'next/link'
 //STYLED COMPONENTS
-import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice, CounterWindow, QuantityCounter, Counter, Plus, Minus, CartLink } from "./MenuPageElements"
-import {HomeHeader, HomeH1, HeaderBtns, StandardButton} from "../home/HomePageElements"
+import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice } from "./MenuPageElements"
+import {HomeHeader, HomeH1, HeaderBtns, StandardButton, ButtonLink} from "../home/HomePageElements"
 import MenuItemModal from './MenuItemModal'
 //AWS PACKAGES 
 import { API } from 'aws-amplify';
@@ -208,19 +208,13 @@ const MainMenu = () => {
                         <StandardButton>
                             Order Now
                         </StandardButton>
-                        {/* <StandardButton>
-                            Book Event
-                        </StandardButton> */}
                     </HeaderBtns>
                 </HomeHeader>
             </MenuHead>
 
             <Location>
                 <LocationH1>Current Location:</LocationH1>
-                        
-                <LocationBtn>
-                    <Link href="/cart">Go TO Cart</Link>
-                </LocationBtn>
+                <ButtonLink href="/cart">Go To Cart</ButtonLink>
             </Location>
 
             <Menu>

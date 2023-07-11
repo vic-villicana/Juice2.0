@@ -1,6 +1,7 @@
 import { AddMoreItems, AddMoreItemsBtn, CartC, CartTotal, CheckoutButton, DetailsBtn, ItemCart, OrderDetails } from "./CartPageElements"
 import {CartBG} from "@/components/cart/CartPageElements"
 import { useGlobalContext } from "@/assets/store"
+import {ButtonLink } from "../home/HomePageElements";
 
 const Cart = () => {
     const {cart, setCart} = useGlobalContext();
@@ -24,9 +25,9 @@ const Cart = () => {
                     When
                 </DetailsBtn>
                 <AddMoreItems>
-                    <AddMoreItemsBtn>
+                    <ButtonLink href='/menu' passHref>
                         Add More Items
-                    </AddMoreItemsBtn>
+                    </ButtonLink>
                 </AddMoreItems>
                 <ItemCart>
                     Items:

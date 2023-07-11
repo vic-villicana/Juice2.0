@@ -2,6 +2,7 @@ import styled from "styled-components"
 // import Link from "next/Link"
 import Image from "next/image"
 import platos from '../../assets/platos.jpg'
+import Link from "next/link"
 
 
 //main header
@@ -65,7 +66,19 @@ export const StandardButton = styled.div`
         border-radius: 6px;
         font-size: 110%;
         cursor: pointer;
+        text-decoration:none;
 `
+
+export const ButtonLink = styled(Link)`
+          padding: 8px 13px;
+        border: none;
+        background: #ef8c29;
+        color: white;
+        border-radius: 6px;
+        font-size: 110%;
+        cursor: pointer;
+        text-decoration:none;
+`;
 
 // about section
 // about section
