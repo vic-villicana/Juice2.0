@@ -1,4 +1,4 @@
-import { ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, Mparagraph, Signature, StandardButton } from "./HomePageElements"
+import { ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, MimageContainer, Mparagraph, Signature, StandardButton } from "./HomePageElements"
 import platos from '../../public/platos.jpg'
 import table from '../../public/mexicantable.jpg'
 
@@ -46,7 +46,9 @@ const HomePage = () => {
                         The Juicy Juice Team
                     </Signature>
                 </Message>
-                <Mimage src={table} height="325" alt="dinner table"/>
+                <MimageContainer>
+                    <Mimage src={table} height="325" width="488" alt="dinner table" layout="responsive"/>
+                </MimageContainer>
             </MessageContainer>
 
             <CardSection>

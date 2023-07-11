@@ -21,11 +21,11 @@ export const MainHeader = styled.div`
         width: auto;
     }
 
-    @media only screen and(min-width:600px){
+    @media only screen and (min-width:600px){
         height:404px
     }
     
-    @media only screen and(min-width:1024px){
+    @media only screen and (min-width:1024px){
         height:475px;
     }
 `
@@ -39,7 +39,7 @@ export const HomeHeader = styled.div`
     flex-direction: column;
     align-items: center;
     width: 250px;
-    @media only screen and(min-width:1024px){
+    @media only screen and (min-width:1024px){
         width:300px;
     }
 `
@@ -84,16 +84,31 @@ export const ButtonLink = styled(Link)`
 // about section
 export const MessageContainer = styled.section`
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     height:650px;
-
+    @media only screen and (min-width: 1024px){
+        flex-direction: row;
+        
+    }
 `
+
+export const MimageContainer = styled.div`
+    height:300px;
+    width:400px;
+    @media only screen  and (min-width:1024px){
+        height:375px;
+        width:525px;
+    }
+`;
+
 export const Message = styled.div`
     font-family: 'Philosopher', sans-serif;
     margin: 0;
-    width: 45%;
+    @media only screen and (min-width:1024px){
+        width: 45%;
+    }
 `
 
 export const MessageH1 = styled.h2`
@@ -128,7 +143,10 @@ export const Mimage = styled(Image)`
 //card section
 
 export const CardSection = styled.section`
-    height:600px;
+    height:auto;
+    @media only screen and (min-width:1024px){
+        height:600px;
+    }
 
 `
 
@@ -147,9 +165,13 @@ export const Line2 = styled(Line)`
 
 export const CardContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    @media only screen and (min-width:1024px){
+        flex-direction: row;
 
+    }
 `
 
 export const Card = styled.div`
