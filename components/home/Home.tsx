@@ -1,4 +1,5 @@
-import { ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, MimageContainer, Mparagraph, Signature, StandardButton } from "./HomePageElements"
+import {ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, MimageContainer, Mparagraph, Signature, StandardButton } from "./HomePageElements"
+import HomeForm from "../forms/HomeForm"
 import platos from '../../public/platos.jpg'
 import table from '../../public/mexicantable.jpg'
 
@@ -90,7 +91,9 @@ const HomePage = () => {
                     </Card>
                 </CardContainer>
             </CardSection>
-
+            <HomeForm/>
+                
+     
         </div>
     )
 }
