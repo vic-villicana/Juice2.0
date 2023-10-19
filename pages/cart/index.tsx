@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css"
 // styled comonents
 import  Cart  from "@/components/cart/Cart";
-
+import Cartv2 from "@/components/cart/Cartv2"
 const Menu = () => {
     return(
         <>
@@ -14,7 +14,7 @@ const Menu = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={styles.main}>
-                    <Cart />    
+                    <Cartv2 />    
             </main>
         </>
     )
