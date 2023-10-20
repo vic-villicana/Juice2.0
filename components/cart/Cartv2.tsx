@@ -1,49 +1,43 @@
-import {CheckoutButton, CartPage, CartContainer, CartTitle, CartTitleBold, CartTitleLight, CartItem, OrderSummary, ItemDescription, ShoppingCart, SummaryContainer} from './CartElements'
-import {  } from './CartPageElements'
-
+import {AddMoreItemsBtn, CheckoutButton, CartPage, CartContainer, CartTitle, CartTitleBold, CartTitleLight, CartItem, OrderSummary, ItemDescription, ShoppingCart, SummaryContainer} from './CartElements'
+import {useGlobalContext} from "@/assets/store"
+import {ButtonLink } from "../home/HomePageElements";
 
 function Cartv2 ()  {
+
+    const {cart, setCart} = useGlobalContext();
+
+    const cartItems = cart.map(item => {
+        return (
+            <CartItem key={item.id}>
+                <SummaryContainer>
+                    <CartTitleBold>
+                        {item.dish}
+                    </CartTitleBold>
+                    <ItemDescription>
+                        {item.description}
+                    </ItemDescription>
+                    <CartTitleLight>
+                        ${item.price}
+                    </CartTitleLight>
+                </SummaryContainer>
+                <CartTitleLight>
+                    x{item.quantity}
+                </CartTitleLight>
+            </CartItem>
+        )
+    })
+
     return(
         <>
             <CartPage>
                 <CartTitle>Shopping Cart</CartTitle>
                 <CartContainer>
                     <ShoppingCart>
-                        <CartItem>
-                            <CartTitleBold>
-                                Juizy Burrito
-                            </CartTitleBold>
-                            <ItemDescription>
-                                Juicy Burrito with rice beans onions tomato steack and hot sauce
-                            </ItemDescription>
-                            <CartTitleLight>
-                                $5.79
-                            </CartTitleLight>
-                        </CartItem>
-                        <CartItem>
-                            <CartTitleBold>
-                                Juizy Burrito
-                            </CartTitleBold>
-                            <ItemDescription>
-                                Juicy Burrito with rice beans onions tomato steack and hot sauce
-                            </ItemDescription>
-                            <CartTitleLight>
-                                $5.79
-                            </CartTitleLight>
-                        </CartItem>
-                        <CartItem>
-                            <CartTitleBold>
-                                Juizy Burrito
-                            </CartTitleBold>
-                            <ItemDescription>
-                                Juicy Burrito with rice beans onions tomato steack and hot sauce
-                            </ItemDescription>
-                            <CartTitleLight>
-                                $5.79
-                            </CartTitleLight>
-                        </CartItem>
+                        {cartItems}
                     </ShoppingCart>
-                    
+                    <AddMoreItemsBtn href='/menu' passHref>
+                        Add More Items
+                    </AddMoreItemsBtn>
                     <OrderSummary>
                         <SummaryContainer>
                             <CartTitleBold>

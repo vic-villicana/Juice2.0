@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { StandardButton, ButtonLink } from '../home/HomePageElements'
 
 export const CartPage = styled.section`
     position:relative;
@@ -39,9 +40,13 @@ export const CartItem = styled.div`
     width:340px;
     height:auto;
     background:#f3f3f3 ;
-    padding:.5em;
+    padding:1em 1em 0 1em;
     border-radius: 6px;
-    margin-bottom:.5em;
+    margin-bottom:1em;
+    display:flex;
+    flex-direction:row;
+    box-shadow: 0px 4px 5px rgb(65, 65, 65, 0.568);
+
 `;
 
 export const CartTitleBold = styled.h3`
@@ -78,4 +83,10 @@ export const CheckoutButton = styled.div`
     color:white;
     padding:9px 7px;
     border-radius: 6px;
+`;
+
+export const AddMoreItemsBtn = styled(ButtonLink)`
+    margin: 0 auto;
+    box-shadow: 0px 4px 5px rgb(65, 65, 65, 0.568);
+    margin-bottom:2em;
 `;
