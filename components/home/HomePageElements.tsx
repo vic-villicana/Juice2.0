@@ -14,7 +14,7 @@ export const MainHeader = styled.div`
         position: relative;
         height: 50vh;
         color: white;
-        margin: 0;
+        margin: 0 0 2em 0;
         background-size: cover;
         background-position: center;
         border-radius: 0 0 11px 11px;
