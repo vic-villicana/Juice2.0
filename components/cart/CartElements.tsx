@@ -3,7 +3,11 @@ import styled from 'styled-components'
 export const CartPage = styled.section`
     position:relative;
     height:100%;
-    padding:4em 4em 0 4em;
+    padding:4em 1.5em 4em 1.5em;
+    @media(min-width:768px){
+        padding:4em 4em 4em 4em;
+
+    }
 `
 
 export const CartTitle = styled.h2`
@@ -16,14 +20,19 @@ export const CartContainer = styled.div`
     margin:0 auto;
     position:relative;
     display:flex;
-    flex-direction:row;
-    justify-content:space-between;
+    flex-direction:column;
+    align-items:center;
+    @media only screen and (min-width:768px){
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:start;
+    }
 `
 
 export const ShoppingCart = styled.div`
     display:flex;
     flex-direction:column;
-
+    margin-bottom:2em;
 `
 
 export const CartItem = styled.div`
@@ -51,14 +60,14 @@ export const OrderSummary = styled.div`
     background: #f3f3f3;
     height:auto;
     width:300px;
-    padding:.5em;
+    padding:1em;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
 `
 
 export const SummaryContainer = styled.div`
-    
+    margin-bottom:1.5em;
 `;
 
 export const CheckoutButton = styled.div`
