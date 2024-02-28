@@ -1,10 +1,14 @@
+import {useState} from 'react'
+import React from 'react'
 import {AddMoreItemsBtn, CheckoutButton, CartPage, CartContainer, CartTitle, CartTitleBold, CartTitleLight, CartItem, OrderSummary, ItemDescription, ShoppingCart, SummaryContainer} from './CartElements'
 import {useGlobalContext} from "@/assets/store"
 import {ButtonLink } from "../home/HomePageElements";
+import CartV2Modal from './Cartv2Modal';
 
 function Cartv2 ()  {
 
     const {cart, setCart} = useGlobalContext();
+    const [openModal, setOpenModal] = useState(false);
 
     const cartItems = cart.map(item => {
         return (
@@ -26,6 +30,16 @@ function Cartv2 ()  {
             </CartItem>
         )
     })
+
+
+    const openOrderCheckoutModal = async (e: React.SyntheticEvent) => {
+        e.preventDefault()
+        setOpenModal(true)
+    }
+
+    const handleClose = () => {
+        setOpenModal(false)
+    }
 
     return(
         <>
@@ -54,11 +68,11 @@ function Cartv2 ()  {
                             </CartTitleLight>
                         </SummaryContainer>
                         
-                        <CheckoutButton>
+                        <CheckoutButton onClick={openOrderCheckoutModal}>
                             Checkout
                         </CheckoutButton>
                     </OrderSummary>
-
+                    <CartV2Modal open={openModal} close={handleClose}/>
                 </CartContainer>
             </CartPage>
         </>

@@ -32,7 +32,7 @@ function HomeForm () {
                     </TheMessage>
                 </FormMessage>
             </FormMessageContainer> */}
-            <FormImage src="/platos.jpg" height="500" width="1000" layout="responsive" />
+            <FormImage src="/platos.jpg" height="500" width="1000" layout="responsive" alt="table full of plates"/>
             <FormContainer>
                 <FormHeading>Contact Us</FormHeading>
                 <TheMessage>

@@ -46,7 +46,11 @@ export const CartItem = styled.div`
     display:flex;
     flex-direction:row;
     box-shadow: 0px 4px 5px rgb(65, 65, 65, 0.568);
-
+    @media(max-width:750px) {
+        width:auto;
+        justify-content:space-between;
+        align-items:end;
+    }
 `;
 
 export const CartTitleBold = styled.h3`
@@ -75,7 +79,7 @@ export const SummaryContainer = styled.div`
     margin-bottom:1.5em;
 `;
 
-export const CheckoutButton = styled.div`
+export const CheckoutButton = styled.button`
     width:80%;
     margin:0 auto;
     text-align:center;
@@ -83,6 +87,7 @@ export const CheckoutButton = styled.div`
     color:white;
     padding:9px 7px;
     border-radius: 6px;
+    border:none;
 `;
 
 export const AddMoreItemsBtn = styled(ButtonLink)`
