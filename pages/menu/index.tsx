@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from '@/styles/Home.module.css'
 import  MainMenu  from "@/components/menu/MainMenu";
+import  MainMenuV2  from "@/components/menu/MainMenuV2";
 
 
 const Menu = () => {
@@ -14,7 +15,7 @@ const Menu = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={styles.main}>
-                    <MainMenu  />
+                    <MainMenuV2  />
             </main>
 
         </>

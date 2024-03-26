@@ -34,11 +34,11 @@ const CartContext = createContext<ContextProps>({
     setCart: (): MenuData[] => []
 })
 
-function useCart() {
-    // const [cart, setCart] = useState<MenuData[]>([])
+// function useCart() {
+//     const [cart, setCart] = useState<MenuData[]>([])
 
-    // return {cart, setCart}
-}
+//     return {cart, setCart}
+// }
 
 export const GlobalContextProvider = ({ children }) => {
     const [cart, setCart] = useState<MenuData[]>([])
