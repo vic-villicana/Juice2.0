@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String?
+  lastName String?
+  email String? @unique
+  emailVerified DateTime?
+  hashedPassword String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  paymentInfo PaymentInfo?
+  orders OrderTicket[]
+}
+
+model PaymentInfo {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  cardNumber String
+  nameOnCard String 
+  zipcode String
+  securityCode String
+  customer Customer @relation(fields: [customerId], references: [id], onDelete:Cascade)
+  customerId String @unique @db.ObjectId
+}
+
+
+model Item{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  menuId String
+  name String
+  price String
+  description String
+  mods String?
+  quantity String
+  ticket OrderTicket? @relation(fields: [ticketId], references:[id])
+  ticketId String? @db.ObjectId
+}
+
+model OrderTicket {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  orderNum Int
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String @db.ObjectId
+  status Status @default(WAITING)
+  total String
+  items Item[]
+}
+
+enum Status {
+  WAITING
+  INPROGRESS
+  COMPLETED
+}
