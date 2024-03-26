@@ -30,6 +30,16 @@ export const CartContainer = styled.div`
     }
 `
 
+export const FlexContainer = styled.div`
+  display:flex;
+  flex-direction:column;
+  background:#ffffff ;
+  padding:1em 1em 0 1em;
+  border-radius: 6px;
+  box-shadow: 0px 4px 5px rgb(65, 65, 65, 0.568);
+
+`;
+
 export const ShoppingCart = styled.div`
     display:flex;
     flex-direction:column;
