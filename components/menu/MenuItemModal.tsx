@@ -5,7 +5,7 @@ import { Modal, Backdrop, Fade } from '@mui/material'
 import { Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuButton, MenuHeader, MenuModal, Options, SubContainer, SubGrid, SubHeading } from '../menu/MenuPageElements'
 import { SmallMenuItem } from './MenuPageElements';
 import {  HomeHeader, MainHeader, HomeH1, StandardButton } from '../home/HomePageElements'
-import { MenuData, SideItems } from './MainMenu';
+import { MenuData, SideItems } from './MainMenuV2';
 import {CounterWindow, QuantityCounter, Counter, Plus, Minus } from "./MenuPageElements"
 
 interface MenuModalProps {
@@ -53,7 +53,7 @@ const MenuItemModal = ({open, close, item, increment, decrement, sides, side, ad
                         <SmallMenuItem>
                             <MenuHeader>
                                 <HomeHeader>
-                                    <HomeH1>{item.dish}</HomeH1>
+                                    <HomeH1>{item.name}</HomeH1>
                                 </HomeHeader>
                             </MenuHeader>
                             <QuantityCounter>

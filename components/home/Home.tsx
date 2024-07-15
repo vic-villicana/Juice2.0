@@ -25,33 +25,6 @@ const HomePage = () => {
                     </HeaderBtns>
                 </HomeHeader>
             </MainHeader>
-
-            <MessageContainer>
-                <Message >
-                    <MessageH1>
-                    A Journey That Never Ends
-                    </MessageH1>
-                    <Line />
-                    <Mparagraph >
-                        Since 2011 Juicy Juize Tacos has been on a mission 
-                        to not only provide Los Angeles with the best 
-                        authentic Mexican food but also the hospitality you 
-                        can expect at the dinner table. From our family 
-                        recipes to our excellent catering staff, we make 
-                        everynight a special night
-                    </Mparagraph>
-                    <Mparagraph >
-                        sincerly,
-                    </Mparagraph>
-                    <Signature >
-                        The Juicy Juice Team
-                    </Signature>
-                </Message>
-                <MimageContainer>
-                    <Mimage src={table} height="325" width="488" alt="dinner table" layout="responsive"/>
-                </MimageContainer>
-            </MessageContainer>
-
             <CardSection>
                 <CardHeading>
                     A Unique And Authentic
@@ -91,6 +64,32 @@ const HomePage = () => {
                     </Card>
                 </CardContainer>
             </CardSection>
+
+            <MessageContainer>
+                <Message >
+                    <MessageH1>
+                    A Journey That Never Ends
+                    </MessageH1>
+                    <Line />
+                    <Mparagraph >
+                        Since 2011 Juicy Juize Tacos has been on a mission 
+                        to not only provide Los Angeles with the best 
+                        authentic Mexican food but also the hospitality you 
+                        can expect at the dinner table. From our family 
+                        recipes to our excellent catering staff, we make 
+                        everynight a special night
+                    </Mparagraph>
+                    <Mparagraph >
+                        sincerly,
+                    </Mparagraph>
+                    <Signature >
+                        The Juicy Juice Team
+                    </Signature>
+                </Message>
+                <MimageContainer>
+                    <Mimage src={table} height="325" width="488" alt="dinner table" layout="responsive"/>
+                </MimageContainer>
+            </MessageContainer>
             <HomeForm/>
                 
      

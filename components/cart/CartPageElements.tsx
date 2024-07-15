@@ -69,7 +69,7 @@ export const CartTotal = styled.div`
     padding: 0.2em 0 0.25em 0;
 `;
 
-export const CheckoutButton = styled.div`
+export const CheckoutButton = styled.button`
     margin-bottom: 1.5em;
     padding: 20px 38px;
     background: #e72b2b;

@@ -17,6 +17,9 @@ export const MainNavlink = styled(Link)`
     color:white;
     text-decoration: none;
     
+    @media only screen and (min-width: 1024px){
+        font-size: large;
+    }
 `;
 
 export const LinkContainer = styled.div`
