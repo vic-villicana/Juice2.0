@@ -11,9 +11,9 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
     
         }catch(err){
             console.log('ITEMS_GET', err)
-            // return res.status(500).json({
-            //     status:'internal server error',
-            // })
+            return res.status(500).json({
+                status:'internal server error',
+            })
         }
     }
     

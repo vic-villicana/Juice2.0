@@ -9,14 +9,13 @@ import MenuItemModal from './MenuItemModal'
 
 //Interface for our DynamoDB data objects
 export interface MenuData{
-    id: string;
-    menuId:number;
-    menuItemId:number;
-    dish:string;
-    img:string;
-    price:number;
+    id:string
+    menuId:string;
+    name:string;
+    price:string;
+    imgUrl:string;
     description:string;
-    quantity:number;
+    quantity?:number | undefined
 }
 
 export interface SideItems{
@@ -28,36 +27,32 @@ export interface SideItems{
 
 
 const menuOptions = [
-    {
-        menu:'FamilyMeals',
-        id:0,
-        desc:"We’re committed to continuously evolving our menu so that we’re always WOW-ing our guests with new unexpected flavor combinations. Be sure to check back to discover our Chef’s latest innovations."
-    },
+
     {
         menu:'Dinner Menu',
-        id:1,
+        id:'dinner',
         desc:"We’re committed to continuously evolving our menu so that we’re always WOW-ing our guests with new unexpected flavor combinations. Be sure to check back to discover our Chef’s latest innovations."
     },
     {
-        menu:'a La Carte',
-        id:2,
+        menu:'Lunch Menu',
+        id:'lunch',
         desc:"Traditional Mexican dinners that are enough to feed the whole family, All plates feed up to two people"
     },
     {
         menu:'Daily Specials',
-        id:3,
+        id:'specials',
         desc:"Some of our more unique and seasonal dishes. Get them while they're here. For a limited time!!"
     },
     {
         menu:'Vegan Menu',
-        id:4,
+        id:'vegan',
         desc:"Yes we even have something for you!"
     },
     {
-        menu:'Kids Menu',
-        id:5,
-        desc:"RECOMMENDED FOR KIDS 8 & UNDER Served with a kids beverage and sliced apples (organic milk add 2.40)"
-    },
+        menu:'FamilyMeals',
+        id:'family',
+        desc:"We’re committed to continuously evolving our menu so that we’re always WOW-ing our guests with new unexpected flavor combinations. Be sure to check back to discover our Chef’s latest innovations."
+    }
 ]
 
 
@@ -66,7 +61,7 @@ const menuOptions = [
 const MainMenuV2 = () => {
     const {cart, setCart} = useGlobalContext();
     const [openItem, setOpenItem] = useState(false)
-    const [selectedMenu, setSelectedMenu] = useState< Number | null>(0)
+    const [selectedMenu, setSelectedMenu] = useState< string>('dinner')
     // const [cart, setCart] = useState<MenuData[]>([])
     const [menu, setMenu] = useState<MenuData[]>([])
     const [item, setItem] = useState<MenuData>({})
@@ -97,7 +92,7 @@ const MainMenuV2 = () => {
         setOpenItem(false)
     }
     
-    const setTheMenu = (optionId: number) => {
+    const setTheMenu = (optionId: string) => {
         setSelectedMenu(optionId)
     }
 
@@ -113,6 +108,8 @@ const MainMenuV2 = () => {
             const items = await fetch('http://localhost:3001/api/items')
             const parsedItems = await items.json()
             console.log(parsedItems)
+            //setMenu
+            setMenu(parsedItems)
         }catch(err){
     
             // console.log('GET_CLIENT',err)
@@ -137,15 +134,17 @@ const MainMenuV2 = () => {
 
     //map out menu item state data to the MenuItem conponent
     const currentMenu = filteredMenu.map(items => {
+        const url = items.imgUrl || ''
+        console.log(url)
         return (
             <MenuItem key={items.id} onClick={() => selectMenu(items)} >
-                <MenuImage src={items.img} alt={items.dish} width="100" height="100"/>
+                <MenuImage src={items.imgUrl}  alt={items.name} width="100" height="100"/>
                 <Titles>
                     <MenuTitle>
-                        {items.dish}
+                        {items.name}
                     </MenuTitle>
                     <MenuPrice>
-                        ${items.price}.00
+                        ${items.price}
                     </MenuPrice>
                 </Titles>
             </MenuItem>
@@ -156,7 +155,7 @@ const MainMenuV2 = () => {
     
     //functions to increment the quantity value of the item state object
     const increment = () => {
-        const newItem = {...item, quantity:item.quantity += 1}
+        const newItem = {...item, quantity:item.quantity ? item.quantity += 1 : 1}
         setItem(newItem)
     }
     const decrement = () => {

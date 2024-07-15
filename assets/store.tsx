@@ -13,13 +13,12 @@ import {useState,  useContext, createContext, Dispatch, SetStateAction} from "re
 
 export interface MenuData{
     id: string;
-    menuId:number;
-    menuItemId:number;
-    dish:string;
-    img:string;
-    price:number;
+    menuId:string;
+    name:string;
+    // img:string;
+    price:string;
     description:string;
-    quantity:number;
+    quantity?:number | undefined;
 }
 
 

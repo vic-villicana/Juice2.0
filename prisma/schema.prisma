@@ -42,9 +42,10 @@ model Item{
   menuId String
   name String
   price String
+  imgUrl String
   description String
   mods String?
-  quantity String
+  quantity String?
   ticket OrderTicket? @relation(fields: [ticketId], references:[id])
   ticketId String? @db.ObjectId
 }
@@ -52,8 +53,8 @@ model Item{
 model OrderTicket {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   orderNum Int
-  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  customerId String @db.ObjectId
+  customer Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String? @db.ObjectId
   status Status @default(WAITING)
   total String
   items Item[]
