@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-
 import { Box } from '@mui/material'
-import { StandardButton, MainHeader } from '../home/HomePageElements'
+import { StandardButton, MainHeader, HomeHeader } from '../home/HomePageElements'
 import Link from 'next/link'
 
 export const MenuHead = styled.section`
-   @media only screen and (min-width:376px){
+   @media only screen and (min-width:375px){
         background-color:grey;
         position: relative;
         height: 50vh;
@@ -36,6 +35,29 @@ export const Menu = styled.div`
     
 `
 
+export const MenuHomeHeader = styled(HomeHeader)`
+
+`;
+
+export const MenuHeaderImage = styled.div`
+    background-position:center;
+    background-size:cover;
+    position: relative;
+    height:100%;
+    background-image: url('/mexicantable.jpg');
+
+    @media only screen and (min-width:600px){
+        height:100%;
+    }
+`
+
+export const MenuHImage = styled(Image)`
+    background-position:center;
+    background-size:cover;
+    position:relative;
+    overflow:hidden;
+`;
+
 export const MenuH1 = styled.h1`
     text-align: center;
     font-size: 250%;
@@ -43,53 +65,6 @@ export const MenuH1 = styled.h1`
 
 `
 
-export const Location = styled.div`
-    padding: 0 23px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 81px;
-    width: auto;
-    border-radius: 9px;
-    margin: 0 1em 2em;
-    box-shadow: 0px 4px 6px rgb(65, 65, 65, 0.568);
-    background-size: cover;
-    background-position: center;
-    background:linear-gradient(rgba(16, 214, 92, 0.9), rgba(16, 214, 92, 0.9)), url(/static/media/sugarskullwhite.185f6e3….jpg);
-
-    @media only screen and (min-width:600px) {
-        margin: 0 2.5em 4em;
-        height: 135px;
-    }
-
-    @media only screen and (min-width:1024px) {
-        width: 30%;
-        height: 81px;
-    }
-`
-
-export const LocationBtn = styled.div`
-    padding: 8px 15px;
-    justify-self: auto;
-    border-radius: 6px;
-    color: white;
-    background: rgba(240, 183, 25, 0.897);
-    border: indianred;
-    box-shadow: 0px 3px 6px rgba(65, 65, 65, 0.568);
-
-    @media only scrren and (min-width:600px) {
-        width: 105px;
-        height: 45px;
-        font-size: 115%;
-    }
-
-
-`
-
-export const LocationH1 = styled.h4`
-    color: whitesmoke;
-    font-size: 1.2em;
-`
 
 export const MenuSelector = styled.div`
     width: 100%;

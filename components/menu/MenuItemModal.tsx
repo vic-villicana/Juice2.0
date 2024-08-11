@@ -12,15 +12,15 @@ interface MenuModalProps {
     open:boolean,
     close: () => void,
     item: MenuData,
-    increment: () => void,
-    decrement: () => void
+    increase: () => void,
+    decrease: () => void
     sides: SideItems[],
     side: SideItems,
     addToCart: (arg0:MenuData) => void,
     chooseASide: (arg0:SideItems) => void
 }
 
-const MenuItemModal = ({open, close, item, increment, decrement, sides, side, addToCart, chooseASide}:MenuModalProps) => {
+const MenuItemModal = ({open, close, item, increase, decrease, sides, side, addToCart, chooseASide}:MenuModalProps) => {
 
     const renderSides = sides.map((sideDish, i) => {
             if(sideDish.item === side.item){
@@ -58,9 +58,9 @@ const MenuItemModal = ({open, close, item, increment, decrement, sides, side, ad
                             </MenuHeader>
                             <QuantityCounter>
                                 <Counter>
-                                    <Plus onClick={increment}>+</Plus>
+                                    <Minus onClick={decrease}>-</Minus>
                                     <CounterWindow>{item.quantity}</CounterWindow>
-                                    <Minus onClick={decrement}>-</Minus>
+                                    <Plus onClick={increase}>+</Plus>
                                 </Counter>
                             </QuantityCounter>
                             <ItemPrice>${item.price}.00</ItemPrice>

@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react'
-import { useGlobalContext } from '@/assets/store'
+import { Locale, useGlobalContext } from '@/assets/store'
 import Link from 'next/link'
 //STYLED COMPONENTS
-import { Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, Location, LocationBtn, LocationH1, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice } from "./MenuPageElements"
-import {HomeHeader, HomeH1, HeaderBtns, StandardButton, ButtonLink} from "../home/HomePageElements"
+import {MenuHImage, MenuHomeHeader, Menu, MenuH1, MenuHead, MenuSelector, MenuBtns, MenuList, MenuImage, Titles, MenuItem, MenuTitle, MenuPrice, MenuHeaderImage } from "./MenuPageElements"
+import {HomeH1, HeaderBtns, StandardButton, ButtonLink} from "../home/HomePageElements"
+import LocationPicker from '../location/LocationPicker' 
 import MenuItemModal from './MenuItemModal'
 
 
@@ -59,7 +60,7 @@ const menuOptions = [
 
 
 const MainMenuV2 = () => {
-    const {cart, setCart} = useGlobalContext();
+    const {cart, setCart, location, setLocation} = useGlobalContext();
     const [openItem, setOpenItem] = useState(false)
     const [selectedMenu, setSelectedMenu] = useState< string>('dinner')
     // const [cart, setCart] = useState<MenuData[]>([])
@@ -87,6 +88,11 @@ const MainMenuV2 = () => {
             img:'/beans.jpg'
         },
     ])
+
+    useEffect(() => {
+        console.log('getting menu')
+        getMenu()
+    }, [])
 
     const handleCloseModal = () => {
         setOpenItem(false)
@@ -122,12 +128,6 @@ const MainMenuV2 = () => {
         const newItem = {...selecteditem}
         setItem(newItem)
     }
-
-    useEffect(() => {
-        console.log('getting menu')
-        getMenu()
-    }, [])
-
     
     //sort through all the menu items and display currently selected menu from menu state
     const filteredMenu = menu.filter(itemz => itemz.menuId === selectedMenu )
@@ -154,21 +154,13 @@ const MainMenuV2 = () => {
     
     
     //functions to increment the quantity value of the item state object
-    const increment = () => {
+    const increase = () => {
         const newItem = {...item, quantity:item.quantity ? item.quantity += 1 : 1}
         setItem(newItem)
     }
-    const decrement = () => {
+    const decrease = () => {
         const newItem = {...item, quantity: item.quantity === 1 ? 1 : item.quantity -= 1}
         setItem(newItem)
-    }
-
-    const addItem = (elItem: MenuData) => {
-
-        const addItem = {...elItem}
-        console.log(cart, addItem)
-
-        setCart([...cart, addItem])
     }
 
     const chooseSide = (side: SideItems) => {
@@ -176,10 +168,21 @@ const MainMenuV2 = () => {
         setSide(newSide)
     }
 
+    const addItem = (elItem: MenuData) => {
+        const addItem = {...elItem}
+        
+        setCart([...cart, addItem])
+    }
+
+    const locationSetter = (city: Locale) => {
+        setLocation(city)
+    }
+
     return(
         <section>
             <MenuHead>
-                <HomeHeader>
+                <MenuHImage src="/mexicantable.jpg" style={{objectFit:"cover"}} fill={true} alt="people around dinner table" />
+                <MenuHomeHeader>
                     <HomeH1>
                         Try the New Juicy Combo!
                     </HomeH1>
@@ -188,21 +191,19 @@ const MainMenuV2 = () => {
                             Order Now
                         </StandardButton>
                     </HeaderBtns>
-                </HomeHeader>
+                </MenuHomeHeader>
             </MenuHead>
 
-            <Location>
-                <LocationH1>Current Location:</LocationH1>
-                <ButtonLink href="/cart">Go To Cart</ButtonLink>
-            </Location>
+            <LocationPicker city={location} locationSetter={locationSetter}/>
+ 
 
             <Menu>
                 <MenuItemModal 
                     open={openItem}
                     close={handleCloseModal}
                     item={item}
-                    increment={increment}
-                    decrement={decrement}
+                    increase={increase}
+                    decrease={decrease}
                     sides={allSides}
                     side={side}
                     addToCart={addItem}
