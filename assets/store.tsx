@@ -20,18 +20,25 @@ export interface MenuData{
     description:string;
     quantity?:number | undefined;
 }
-
+export interface Locale{
+    city:string
+}
 
 interface ContextProps {
     cart:MenuData[],
     setCart:Dispatch<SetStateAction<MenuData[]>>
+    location:Locale,
+    setLocation:Dispatch<SetStateAction<Locale>>
 }
 
 
-const CartContext = createContext<ContextProps>({
-    cart: [] as MenuData[],
-    setCart: (): MenuData[] => []
-})
+const CartContext = createContext<ContextProps>({} as ContextProps)
+// const CartContext = createContext<ContextProps>({
+//     cart: [] as MenuData[],
+//     setCart: (): MenuData[] => [],
+//     location: {city:""} as Locale,
+//     setLocation: (): Locale => 
+// })
 
 // function useCart() {
 //     const [cart, setCart] = useState<MenuData[]>([])
@@ -41,9 +48,10 @@ const CartContext = createContext<ContextProps>({
 
 export const GlobalContextProvider = ({ children }) => {
     const [cart, setCart] = useState<MenuData[]>([])
+    const [location, setLocation] = useState<Locale>("" as unknown as Locale)
 
-    return (
-        <CartContext.Provider value={{cart, setCart}}>
+    return (  
+        <CartContext.Provider value={{cart, setCart, location, setLocation}}>
             {children}
         </CartContext.Provider>
     )
