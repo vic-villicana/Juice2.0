@@ -1,4 +1,4 @@
-import {ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, MimageContainer, Mparagraph, Signature, StandardButton } from "./HomePageElements"
+import {ButtonLink, Card, Card2, CardBtn, CardContainer, CardHeading, CardSection, CardText, Gradient, HeaderBtns, HomeH1, HomeHeader, Line, Line2, MainHeader, Message, MessageContainer, MessageH1, Mimage, MimageContainer, Mparagraph, Signature, StandardButton, MainHeaderImage } from "./HomePageElements"
 import HomeForm from "../forms/HomeForm"
 import platos from '../../public/platos.jpg'
 import table from '../../public/mexicantable.jpg'
@@ -8,6 +8,7 @@ const HomePage = () => {
         <div>
 
             <MainHeader >
+                <MainHeaderImage src="/mexicantable.jpg"  fill={true} style={{objectFit:"cover"}} alt="table full of plates"/>
                 <HomeHeader>
                     <HomeH1>
                         Juicy Juice Tacos
@@ -87,7 +88,7 @@ const HomePage = () => {
                     </Signature>
                 </Message>
                 <MimageContainer>
-                    <Mimage src={table} height="325" width="488" alt="dinner table" layout="responsive"/>
+                    <Mimage src={table} height="300" width="375" alt="dinner table" layout="responsive"/>
                 </MimageContainer>
             </MessageContainer>
             <HomeForm/>

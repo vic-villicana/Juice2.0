@@ -9,7 +9,7 @@ import Link from "next/link"
 //main header
 export const MainHeader = styled.div`
         
-    @media only screen and (min-width:376px){
+    @media only screen and (min-width:375px){
         background-color:grey;
         position: relative;
         height: 50vh;
@@ -18,16 +18,17 @@ export const MainHeader = styled.div`
         background-size: cover;
         background-position: center;
         border-radius: 0 0 11px 11px;
-        width: auto;
+        width: 100%;
     }
 
-    @media only screen and (min-width:600px){
-        height:404px
-    }
-    
-    @media only screen and (min-width:1024px){
-        height:475px;
-    }
+
+`
+
+export const MainHeaderImage = styled(Image)`
+    background-position:center;
+    background-size:cover;
+    position:relative;
+    overflow:hidden;
 `
 
 export const HomeHeader = styled.div`
@@ -88,6 +89,7 @@ export const MessageContainer = styled.section`
     justify-content: space-around;
     align-items: center;
     height:650px;
+    margin:6em 2em 6em 2em;
     @media only screen and (min-width: 1024px){
         flex-direction: row;
         
@@ -96,7 +98,7 @@ export const MessageContainer = styled.section`
 
 export const MimageContainer = styled.div`
     height:300px;
-    width:400px;
+    width:100%;
     @media only screen  and (min-width:1024px){
         height:375px;
         width:525px;
@@ -145,7 +147,6 @@ export const Mimage = styled(Image)`
 export const CardSection = styled.section`
     height:auto;
     @media only screen and (min-width:1024px){
-        height:600px;
     }
 
 `
