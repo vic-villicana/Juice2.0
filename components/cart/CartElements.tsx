@@ -41,9 +41,10 @@ export const FlexContainer = styled.div`
 `;
 
 export const ShoppingCart = styled.div`
-    display:flex;
+    display:flex-inline;
     flex-direction:column;
     margin-bottom:2em;
+    width:59%;
 `
 
 export const CartItem = styled.div`
@@ -98,10 +99,46 @@ export const CheckoutButton = styled.button`
     padding:9px 7px;
     border-radius: 6px;
     border:none;
+    box-shadow: 1px 2px 7px rgb(65, 65, 65, 0.568);
+    font-size:110%;
 `;
 
 export const AddMoreItemsBtn = styled(ButtonLink)`
     margin: 0 auto;
     box-shadow: 0px 4px 5px rgb(65, 65, 65, 0.568);
     margin-bottom:2em;
+`;
+
+export const ItemsList = styled.div`
+    position:relaitve;
+    width:auto;
+    height:auto;
+    padding:1em;
+`;
+
+export const Item = styled.div`
+  margin:0 0 2em 0;
+  width:100%;
+  height:auto;
+  padding:0 .25em .5em .25em;
+  border-bottom:1px solid black;
+`;
+
+export const ItemName = styled.h2`
+    font-weight:400;
+    margin:0 0 .25em 0;
+`;
+
+export const FlexItems = styled.div`
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+`;
+
+export const ItemQuantity = styled.p`
+  
+`;
+
+export const ItemPrice = styled.p`
+  
 `;

@@ -7,7 +7,8 @@ import {useGlobalContext} from "@/assets/store"
 
 import {AddMoreItemsBtn, CheckoutButton, CartPage, CartContainer, CartTitle, CartTitleBold, CartTitleLight, CartItem, OrderSummary, ItemDescription, ShoppingCart, SummaryContainer, FlexContainer} from './CartElements'
 import { CheckoutNotes } from './Cartv2ModalElements'
-import {ButtonLink } from "../home/HomePageElements";
+
+import CartItemsList from './CartItemsList'
 import CartV2Modal from './Cartv2Modal';
 import CheckoutSummary from './CheckoutSummary'
 
@@ -22,30 +23,31 @@ function Cartv2 () {
         }
 
         if((searchParams.get('cancelled'))){
+            console.log(searchParams)
             toast.error('something went wrong')
         }
-    }, [SearchParams])
+    }, [searchParams])
 
-    const cartItems = cart.map(item => {
-        return (
-            <CartItem key={item.id}>
-                <SummaryContainer>
-                    <CartTitleBold>
-                        {item.name}
-                    </CartTitleBold>
-                    <ItemDescription>
-                        {item.description}
-                    </ItemDescription>
-                    <CartTitleLight>
-                        ${item.price}
-                    </CartTitleLight>
-                </SummaryContainer>
-                <CartTitleLight>
-                    x{item.quantity}
-                </CartTitleLight>
-            </CartItem>
-        )
-    })
+    // const cartItems = cart.map(item => {
+    //     return (
+    //         <CartItem key={item.id}>
+    //             <SummaryContainer>
+    //                 <CartTitleBold>
+    //                     {item.name}
+    //                 </CartTitleBold>
+    //                 <ItemDescription>
+    //                     {item.description}
+    //                 </ItemDescription>
+    //                 <CartTitleLight>
+    //                     ${item.price}
+    //                 </CartTitleLight>
+    //             </SummaryContainer>
+    //             <CartTitleLight>
+    //                 x{item.quantity}
+    //             </CartTitleLight>
+    //         </CartItem>
+    //     )
+    // })
 
 
     const openOrderCheckoutModal = async (e: React.SyntheticEvent) => {
@@ -75,37 +77,14 @@ function Cartv2 () {
                 <CartTitle>Shopping Cart</CartTitle>
                 <CartContainer>
                     <ShoppingCart>
-                        {cartItems}
+                        <CartItemsList items={cart} />
                         <FlexContainer>
                             <CartTitleLight>Special Requests</CartTitleLight>
                             <CheckoutNotes></CheckoutNotes>
                         </FlexContainer>
 
                     </ShoppingCart>
-                    <AddMoreItemsBtn href='/menu' passHref>
-                        Add More Items
-                    </AddMoreItemsBtn>
                     <CheckoutSummary orderCheckout={openOrderCheckoutModal}/>
-                    <OrderSummary>
-                        <SummaryContainer>
-                            <CartTitleBold>
-                                Order Summary
-                            </CartTitleBold>
-                            <CartTitleLight>
-                                Subtotal:
-                            </CartTitleLight>
-                            <CartTitleLight>
-                                Taxes & Fees:
-                            </CartTitleLight>
-                            <CartTitleLight>
-                                Order Total:
-                            </CartTitleLight>
-                        </SummaryContainer>
-                        
-                        <CheckoutButton onClick={openOrderCheckoutModal}>
-                            Checkout
-                        </CheckoutButton>
-                    </OrderSummary>
                     <CartV2Modal open={openModal} close={handleClose}/>
                 </CartContainer>
             </CartPage>

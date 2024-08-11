@@ -22,7 +22,9 @@ const CheckoutSummary = (orderCheckout:CheckoutProps) => {
                         Order Total:
                     </CartTitleLight>
             </SummaryContainer>
-                        
+            <AddMoreItemsBtn href='/menu' passHref>
+                Add More Items
+            </AddMoreItemsBtn>
             <CheckoutButton  onClick={orderCheckout}>
                 Checkout
             </CheckoutButton>
