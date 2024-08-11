@@ -6,22 +6,33 @@ export const FormSection = styled.div`
     justify-items: center; */
     /* margin: 5em 0em; */
     /* padding: 5em 0; */
-    position:relative;
     height:auto;
+    position: relative;
+    margin-top:13em;
 `
+
+export const FormSectionContainer = styled.div`
+      position:relative;
+      height:100%;
+`;
 
 export const FormContainer = styled.div`
     background-color: #f4f4f4;
     border-radius:5px;
     height:auto;
     padding:2em 0em 1em 0em;
-    max-width:425px;;
+    width:100%;
     z-index:999;
     /* margin:4em auto 0 auto; */
     position:absolute;
     transform:translate(-50%, -50%);
     top:50%;
     left:50%;
+
+    @media only screen and (min-width:1024px){
+        width:auto;
+
+    }
 `
 
 export const FormImage = styled(Image)`
@@ -33,8 +44,11 @@ export const FormImage = styled(Image)`
 export const Homeform = styled.form`
     padding: 20px;
     border-radius: 5px;
-    width:auto;
+    width:100%;
     margin:0 auto;
+    @media only screen and (min-width:600px){
+        width:auto;
+    }
 `
 
 export const SubmitForm = styled.button`

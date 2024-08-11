@@ -45,7 +45,7 @@ model Item{
   imgUrl String
   description String
   mods String?
-  quantity String?
+  quantity Int? @default(1)
   ticket OrderTicket? @relation(fields: [ticketId], references:[id])
   ticketId String? @db.ObjectId
 }
@@ -58,6 +58,13 @@ model OrderTicket {
   status Status @default(WAITING)
   total String
   items Item[]
+}
+
+model Message {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String 
+  email String
+  message String
 }
 
 enum Status {

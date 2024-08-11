@@ -2,8 +2,9 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import { TclientSchema, clientSchema } from '@/lib/types'
 import { zodResolver } from '@hookform/resolvers/zod'
+import toast from "react-hot-toast"
 
-import {FormImage, FormSection, TheMessage, FormMessage, FormMessageContainer, FormLabel, FormError, SubmitForm, FormHeading, FormTextarea, FormContainer, Homeform, HomeInput} from './FormElements'
+import {FormSectionContainer, FormImage, FormSection, TheMessage, FormMessage, FormMessageContainer, FormLabel, FormError, SubmitForm, FormHeading, FormTextarea, FormContainer, Homeform, HomeInput} from './FormElements'
 
 function HomeForm () {
  
@@ -16,13 +17,30 @@ function HomeForm () {
         resolver: zodResolver(clientSchema)
     });
 
-    function onSubmit(data:TclientSchema) {
-        console.log(data)
+    const sendToJuicy = async function(data:TclientSchema){
+        const response = await fetch('/api/contact', {
+            method:"POST",
+            body: JSON.stringify(data),
+            headers:{
+                "Content-Type": "application/json"
+            }
+        })
+        return response
+    }
+ 
+    async function onSubmit(data:TclientSchema) {
+        const response = await sendToJuicy(data)
+        if(response.status === 500){
+            toast.error("Server error, please try again.")
+        }else{
+            toast.success("Message sent, we will get back to you!")
+        }
+        console.log(response.status)
         reset()
     }
     return(
         <FormSection>
-            {/* <FormMessageContainer>
+                        {/* <FormMessageContainer>
                 <FormMessage>
                     <FormHeading>Bringing The goodtimes</FormHeading>
                     <TheMessage>
@@ -32,6 +50,7 @@ function HomeForm () {
                     </TheMessage>
                 </FormMessage>
             </FormMessageContainer> */}
+            <FormSectionContainer>
             <FormImage src="/platos.jpg" height="500" width="1000" layout="responsive" alt="table full of plates"/>
             <FormContainer>
                 <FormHeading>Contact Us</FormHeading>
@@ -54,6 +73,9 @@ function HomeForm () {
                     <SubmitForm disabled={isSubmitting} type="submit" >Send It</SubmitForm>
                 </Homeform>
             </FormContainer>
+            </FormSectionContainer>
+
+            
         </FormSection>
     )
 }
