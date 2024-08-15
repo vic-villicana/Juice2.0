@@ -28,7 +28,20 @@ export const MenuHead = styled.section`
     }
 `
 export const MenuHeader = styled(MainHeader)`
-   height:40vh;
+    margin:0 0 0 0;
+    height:40vh;
+`;
+
+export const ModalImage = styled(Image)`
+    background-position:center;
+    background-size:cover;
+    position:relative;
+    overflow:hidden;
+`;
+
+export const MenuModalHeader = styled(HomeHeader)`
+    height:100%;
+    margin:0 0 0 0;
 `;
 
 export const Menu = styled.div`
@@ -228,6 +241,11 @@ export const Plus = styled.div`
     cursor:pointer;
 `;
 
+export const ModalTitle = styled.h5`
+    color:whitesmoke;
+    font-size: 1em;
+`;
+
 export const CounterWindow = styled.p`
     display:flex;
     align-items: center;
@@ -243,7 +261,6 @@ export const CounterWindow = styled.p`
 export const SubContainer = styled.div`
     width: auto;
     height: auto;
-    margin-bottom:3em;
 `;
 
 export const SubHeading = styled.h2`

@@ -2,7 +2,7 @@ import React from 'react'
 //material Ui
 import { Modal, Backdrop, Fade } from '@mui/material'
 // styled components
-import { Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuButton, MenuHeader, MenuModal, Options, SubContainer, SubGrid, SubHeading } from '../menu/MenuPageElements'
+import { MenuModalHeader, Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuButton, MenuHeader, MenuModal, ModalImage, Options, SubContainer, SubGrid, SubHeading, ModalTitle } from '../menu/MenuPageElements'
 import { SmallMenuItem } from './MenuPageElements';
 import {  HomeHeader, MainHeader, HomeH1, StandardButton } from '../home/HomePageElements'
 import { MenuData, SideItems } from './MainMenuV2';
@@ -47,14 +47,14 @@ const MenuItemModal = ({open, close, item, increase, decrease, sides, side, addT
                 BackdropProps={{
                     timeout:500,
                 }}
-            >
+            >  
                 <Fade in={open}>
                     <MenuModal>
                         <SmallMenuItem>
                             <MenuHeader>
-                                <HomeHeader>
-                                    <HomeH1>{item.name}</HomeH1>
-                                </HomeHeader>
+                                
+                                    <ModalImage src={item.imgUrl} fill={true} alt="food image" />
+                                
                             </MenuHeader>
                             <QuantityCounter>
                                 <Counter>
@@ -62,8 +62,9 @@ const MenuItemModal = ({open, close, item, increase, decrease, sides, side, addT
                                     <CounterWindow>{item.quantity}</CounterWindow>
                                     <Plus onClick={increase}>+</Plus>
                                 </Counter>
+                                <ModalTitle>{item.name}</ModalTitle>
                             </QuantityCounter>
-                            <ItemPrice>${item.price}.00</ItemPrice>
+                            <ItemPrice>${item.price}</ItemPrice>
                             <ItemDescription>
                                 {item.description}
                             </ItemDescription>
