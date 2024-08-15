@@ -67,6 +67,14 @@ model Message {
   message String
 }
 
+model Location {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  city String
+  address String
+  directions String
+  active Boolean
+}
+
 enum Status {
   WAITING
   INPROGRESS

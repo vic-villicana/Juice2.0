@@ -22,6 +22,9 @@ export interface MenuData{
 }
 export interface Locale{
     city:string
+    address: string
+    directions: string
+    active: boolean
 }
 
 interface ContextProps {
