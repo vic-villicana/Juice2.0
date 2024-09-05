@@ -38,7 +38,7 @@ const HomePage = () => {
                         <CardText>
                             All Your Favorites, Made Fresh
                         </CardText>
-                        <CardBtn >
+                        <CardBtn href='/menu' passHref>
                             Order Now
                         </CardBtn>
                         <Card2 src="/platos.jpg" height="300" width="300" alt="plate" />
@@ -48,7 +48,7 @@ const HomePage = () => {
                         <CardText>
                             Family, Food, Tradition
                         </CardText>
-                        <CardBtn >
+                        <CardBtn href='/' passHref>
                             Catering 
                         </CardBtn>
                         <Card2 src="/mexicantable.jpg" height="300" width="300" alt="plate" />
@@ -58,7 +58,7 @@ const HomePage = () => {
                         <CardText>
                             Ask Us Anything
                         </CardText>
-                        <CardBtn >
+                        <CardBtn href='#contact' passHref>
                             Contact Us
                         </CardBtn>
                         <Card2 src="/platos.jpg" height="300" width="300" alt="plate" />
@@ -91,7 +91,7 @@ const HomePage = () => {
                     <Mimage src={table} height="300" width="375" alt="dinner table" layout="responsive"/>
                 </MimageContainer>
             </MessageContainer>
-            <HomeForm/>
+            <HomeForm />
                 
      
         </div>

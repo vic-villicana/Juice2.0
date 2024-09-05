@@ -71,7 +71,7 @@ export const StandardButton = styled.div`
 `
 
 export const ButtonLink = styled(Link)`
-          padding: 8px 13px;
+        padding: 8px 13px;
         border: none;
         background: #ef8c29;
         color: white;
@@ -216,7 +216,7 @@ export const CardText = styled.h3`
     z-index:9999;
     color:white;
 `
-export const CardBtn = styled(StandardButton)`
+export const CardBtn = styled(ButtonLink)`
     position:absolute;
     width:auto;
     transform:translate(-50%, -50%);

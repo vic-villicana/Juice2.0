@@ -184,7 +184,7 @@ export const SmallMenuItem = styled.div`
     width:390px;
     margin:0 auto;
     background:white;
-    height:100%;
+    height:94%;
     overflow-y:scroll;
     padding-bottom:2em;
 `
@@ -318,12 +318,12 @@ export const Options = styled(Image)`
     object-fit:cover;
 `;
 
-export const MenuButton = styled(StandardButton)`
-    text-align: center;
-    width:75%;
-    margin:0 auto;
-    background-color:#e72b2b;
-`;
+// export const MenuButton = styled(StandardButton)`
+//     text-align: center;
+//     width:75%;
+//     margin:0 auto;
+//     background-color:#e72b2b;
+// `;
 
 export const CartLink = styled(Link)`
     color:green;

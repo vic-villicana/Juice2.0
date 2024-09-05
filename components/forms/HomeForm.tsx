@@ -39,7 +39,7 @@ function HomeForm () {
         reset()
     }
     return(
-        <FormSection>
+        <FormSection id='contact' >
                         {/* <FormMessageContainer>
                 <FormMessage>
                     <FormHeading>Bringing The goodtimes</FormHeading>
