@@ -33,6 +33,7 @@ const LocationPicker = (props:{city: Locale, locationSetter: SetLocale["setL"] }
     const selectLocation = (selectedCity:Locale) => {
         props.locationSetter(selectedCity)
         console.log(typeof location, location)
+        setOpenMenu(false)
     }   
 
     const openModal = () => {
@@ -47,7 +48,7 @@ const LocationPicker = (props:{city: Locale, locationSetter: SetLocale["setL"] }
 
         <Location>
             <LocationModal open={openMenu} close={closeModal} cities={location} chooseLocation={selectLocation}/>
-            <LocationH1>Current Location: {props.city.toString()} </LocationH1>
+            <LocationH1>Current Location: {props.city.city} </LocationH1>
             <LocationBtn onClick={openModal}>Select Location</LocationBtn>
         </Location>
     )

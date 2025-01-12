@@ -19,7 +19,7 @@ const LocationModal = ({open, close,cities, chooseLocation}:LocationModalProps) 
     return  <div key={index}>
                 <LocationSelectBtn onClick={() => chooseLocation(city)}>
                     <LocationText>
-                        {city.toString()}
+                        {city.city}
                     </LocationText>
                 </LocationSelectBtn>
             </div>
