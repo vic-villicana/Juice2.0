@@ -5,7 +5,8 @@ export interface CheckoutProps {
     
 }
 
-const CheckoutSummary = (orderCheckout:CheckoutProps) => {
+const CheckoutSummary = ({orderCheckout}:CheckoutProps) => {
+    
     return (
         <OrderSummary>
             <SummaryContainer>
