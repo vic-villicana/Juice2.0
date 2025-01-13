@@ -69,9 +69,10 @@ model Message {
 
 model Location {
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  team String
   city String
   address String
-  directions String
+  notes String
   active Boolean
 }
 
