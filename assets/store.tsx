@@ -15,15 +15,16 @@ export interface MenuData{
     id: string;
     menuId:string;
     name:string;
-    // img:string;
-    price:string;
+    imgUrl:string;
+    price:number | string;
     description:string;
     quantity?:number | undefined;
 }
 export interface Locale{
+    team: string
     city:string
     address: string
-    directions: string
+    notes: string
     active: boolean
 }
 
