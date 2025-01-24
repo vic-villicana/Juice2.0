@@ -15,6 +15,8 @@
     "@hookform/resolvers": "^3.3.2",
     "@mui/material": "^5.13.5",
     "@prisma/client": "^5.10.2",
+    "@stripe/react-stripe-js": "^2.8.1",
+    "@stripe/stripe-js": "^4.9.0",
     "@types/node": "20.2.5",
     "@types/react": "18.2.9",
     "@types/react-dom": "18.2.4",

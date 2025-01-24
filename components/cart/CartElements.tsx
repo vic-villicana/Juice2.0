@@ -101,6 +101,7 @@ export const CheckoutButton = styled.button`
     border:none;
     box-shadow: 1px 2px 7px rgb(65, 65, 65, 0.568);
     font-size:110%;
+    cursor: pointer;
 `;
 
 export const AddMoreItemsBtn = styled(ButtonLink)`
