@@ -2,7 +2,7 @@ import React from 'react'
 //material Ui
 import { Modal, Backdrop, Fade } from '@mui/material'
 // styled components
-import { MenuModalHeader, Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuButton, MenuHeader, MenuModal, ModalImage, Options, SubContainer, SubGrid, SubHeading, ModalTitle } from '../menu/MenuPageElements'
+import { MenuModalHeader, Choices, Chosen, ChosenHeading, ItemDescription, ItemPrice, MenuBtns, MenuHeader, MenuModal, ModalImage, Options, SubContainer, SubGrid, SubHeading, ModalTitle } from '../menu/MenuPageElements'
 import { SmallMenuItem } from './MenuPageElements';
 import {  HomeHeader, MainHeader, HomeH1, StandardButton } from '../home/HomePageElements'
 import { MenuData, SideItems } from './MainMenuV2';
@@ -87,7 +87,7 @@ const MenuItemModal = ({open, close, item, increase, decrease, sides, side, addT
                                     {renderSides}
                                 </Choices>
                             </SubGrid>
-                            <MenuButton onClick={() => addToCart(item)}>Add To Cart</MenuButton>
+                            <MenuBtns onClick={() => addToCart(item)}>Add To Cart</MenuBtns>
                         </SmallMenuItem>
                     </MenuModal>
 

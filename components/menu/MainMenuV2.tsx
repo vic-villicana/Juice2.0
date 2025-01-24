@@ -8,16 +8,18 @@ import LocationPicker from '../location/LocationPicker'
 import MenuItemModal from './MenuItemModal'
 
 
+import {MenuData} from '@/assets/store'
+
 //Interface for our DynamoDB data objects
-export interface MenuData{
-    id:string
-    menuId:string;
-    name:string;
-    price:string;
-    imgUrl:string;
-    description:string;
-    quantity?:number | undefined
-}
+// export interface MenuData{
+//     id:string
+//     menuId:string;
+//     name:string;
+//     price:string;
+//     imgUrl:string;
+//     description:string;
+//     quantity?:number | undefined
+// }
 
 export interface SideItems{
     item:string;
@@ -133,6 +135,7 @@ const MainMenuV2 = () => {
     const filteredMenu = menu.filter(itemz => itemz.menuId === selectedMenu )
 
     //map out menu item state data to the MenuItem conponent
+
     const currentMenu = filteredMenu.map(items => {
         const url = items.imgUrl || ''
         console.log(url)
@@ -169,9 +172,9 @@ const MainMenuV2 = () => {
     }
 
     const addItem = (elItem: MenuData) => {
-        const addItem = {...elItem}
+        const menuItem = {...elItem}
         
-        setCart([...cart, addItem])
+        setCart([...cart, menuItem])
     }
 
     const locationSetter = (city: Locale) => {
