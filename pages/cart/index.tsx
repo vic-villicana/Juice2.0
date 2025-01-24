@@ -3,12 +3,11 @@ import Head from "next/head";
 //styles 
 import styles from "@/styles/Home.module.css"
 // styled comonents
-import  Cart  from "@/components/cart/Cart";
 import Cartv2 from "@/components/cart/Cartv2"
 
 
 
-const Menu = () => {
+const Cart = () => {
 
     
 
@@ -27,4 +26,4 @@ const Menu = () => {
     )
 }
 
-export default Menu
+export default Cart
