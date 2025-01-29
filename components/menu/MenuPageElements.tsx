@@ -121,6 +121,16 @@ export const MenuBtns = styled.div`
     flex-shrink: 0;
     color: white;
     cursor: pointer;
+    &:hover {
+        background:rgba(240, 183, 25, 0.897);
+    }   
+    &:action {
+        background:rgba(54, 252, 120, 0.897);
+    }   
+`
+
+export const OrderClicked = styled.div`
+
 `
 
 export const MenuItem = styled.div`

@@ -6,9 +6,9 @@ import {MenuHImage, MenuHomeHeader, Menu, MenuH1, MenuHead, MenuSelector, MenuBt
 import {HomeH1, HeaderBtns, StandardButton, ButtonLink} from "../home/HomePageElements"
 import LocationPicker from '../location/LocationPicker' 
 import MenuItemModal from './MenuItemModal'
-
-
 import {MenuData} from '@/assets/store'
+
+import toast, {Toaster} from 'react-hot-toast'
 
 //Interface for our DynamoDB data objects
 // export interface MenuData{
@@ -171,14 +171,16 @@ const MainMenuV2 = () => {
         setSide(newSide)
     }
 
+    const locationSetter = (city: Locale) => {
+        setLocation(city)
+    }
+
     const addItem = (elItem: MenuData) => {
         const menuItem = {...elItem}
         
         setCart([...cart, menuItem])
-    }
-
-    const locationSetter = (city: Locale) => {
-        setLocation(city)
+        toast('Added to Cart')
+        setOpenItem(false)
     }
 
     return(
@@ -199,7 +201,7 @@ const MainMenuV2 = () => {
 
             <LocationPicker city={location} locationSetter={locationSetter}/>
  
-
+            <Toaster />
             <Menu>
                 <MenuItemModal 
                     open={openItem}
